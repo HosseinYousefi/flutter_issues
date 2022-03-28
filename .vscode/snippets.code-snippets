@@ -1,0 +1,19 @@
+{
+	"New Entity": {
+		"prefix": "/entity",
+		"scope": "dart",
+		"body": [
+			"import 'package:freezed_annotation/freezed_annotation.dart';",
+			"",
+			"part '${TM_FILENAME_BASE}.freezed.dart';",
+			"",
+			"@freezed",
+			"class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} with _$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} {",
+			"  const factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}() = _${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g};",
+			"",
+			"}",
+			""
+		],
+		"description": "New entity"
+	}
+}

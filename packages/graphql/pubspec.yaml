@@ -1,0 +1,12 @@
+name: graphql
+description: GitHub GraphQL Generated Types
+version: 0.0.1
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+
+dependencies:
+
+dev_dependencies:
+  ferry_generator:
+  build_runner:
