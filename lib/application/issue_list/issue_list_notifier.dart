@@ -59,7 +59,7 @@ class IssueListNotifier extends StateNotifier<IssueListState> {
               ),
             ),
           );
-          _issueListRepo.loadMore();
+          _issueListRepo.loadMore(issueList.pageInfo.endCursor);
         },
         orElse: () {
           // Do nothing if there is no data available.

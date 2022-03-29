@@ -40,13 +40,13 @@ class AuthHttpClient extends http.BaseClient {
 
 final authHttpClientProvider = Provider((ref) => AuthHttpClient(ref.read));
 
-/// Provider for [TypedLink]. Used for GraphQL requests.
+/// Provider for [Client]. Used for GraphQL requests.
 ///
 /// Depends on:
 /// * storeProvider
 /// * gitHubGqlLinkProvider
 /// * authHttpClientProvider
-final gqlClientProvider = Provider<TypedLink>((ref) {
+final gqlClientProvider = Provider<Client>((ref) {
   final store = ref.watch(storeProvider).asData!.value;
   final endpoint = ref.watch(gitHubGqlEndpointProvider);
   final httpClient = ref.watch(authHttpClientProvider);

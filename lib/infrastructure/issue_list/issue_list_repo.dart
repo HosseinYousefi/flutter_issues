@@ -21,17 +21,19 @@ final issueListRepoProvider = Provider<IIssueListRepo>((ref) {
 });
 
 class IssueListRepo implements IIssueListRepo {
-  final TypedLink _client;
+  final Client _client;
 
   const IssueListRepo(this._client);
 
+  GIssueListReq get request => GIssueListReq(
+        (b) => b
+          ..requestId = 'issueList'
+          ..vars.first = 10,
+      );
+
   @override
   Stream<Either<RepoFailure, IssueList>> watch() {
-    return _client
-        .request(GIssueListReq((b) => b
-          ..vars.first = 10
-          ..requestId = 'issueList'))
-        .map((res) {
+    return _client.request(request).map((res) {
       if (res.hasErrors || res.data == null) {
         print(res.graphqlErrors);
         print(res.linkException);
@@ -77,5 +79,22 @@ class IssueListRepo implements IIssueListRepo {
   }
 
   @override
-  void loadMore() {}
+  void loadMore(String endCursor) {
+    _client.requestController.add(
+      request.rebuild(
+        (r) => r
+          ..vars.after = endCursor
+          ..updateResult = (previous, result) =>
+              previous?.rebuild((b) {
+                b.repository.issues.pageInfo =
+                    result?.repository?.issues.pageInfo.toBuilder();
+                final newIssues = result?.repository?.issues.nodes;
+                if (newIssues != null) {
+                  b.repository.issues.nodes.addAll(newIssues);
+                }
+              }) ??
+              result,
+      ),
+    );
+  }
 }

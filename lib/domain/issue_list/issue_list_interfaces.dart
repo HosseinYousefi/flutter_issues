@@ -4,5 +4,5 @@ import 'entities/issue_list.dart';
 abstract class IIssueListRepo extends Repo<IssueList> {
   const IIssueListRepo();
 
-  void loadMore();
+  void loadMore(String endCursor);
 }
