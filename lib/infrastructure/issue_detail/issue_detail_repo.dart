@@ -51,11 +51,13 @@ class IssueDetailRepo implements IIssueDetailRepo {
               .map(
                 (label) => IssueLabel(
                   title: label.name,
+                  // TODO: repeating logic
                   color: Color(
-                    int.parse(
-                      label.color,
-                      radix: 16,
-                    ),
+                    0xFF000000 +
+                        int.parse(
+                          label.color,
+                          radix: 16,
+                        ),
                   ),
                 ),
               )

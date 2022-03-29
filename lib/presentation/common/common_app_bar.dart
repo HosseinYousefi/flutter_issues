@@ -22,10 +22,13 @@ class CommonAppBar extends HookConsumerWidget implements PreferredSizeWidget {
       leading: leading,
       centerTitle: true,
       actions: [
-        const Center(child: Text('Dark Mode?')),
-        Switch(
-          value: settings.brightness == Brightness.dark,
-          onChanged: settingsNotifier.darkModeToggled,
+        IconButton(
+          onPressed: settingsNotifier.toggleBrightness,
+          icon: Icon(
+            settings.brightness == Brightness.dark
+                ? Icons.light_mode_rounded
+                : Icons.dark_mode_rounded,
+          ),
         ),
       ],
     );

@@ -27,7 +27,9 @@ class SettingsNotifier {
 
   const SettingsNotifier(this._settingsService);
 
-  void darkModeToggled(bool isDark) {
-    _settingsService.brightness = isDark ? Brightness.dark : Brightness.light;
+  void toggleBrightness() {
+    _settingsService.brightness = _settingsService.brightness == Brightness.dark
+        ? Brightness.light
+        : Brightness.dark;
   }
 }

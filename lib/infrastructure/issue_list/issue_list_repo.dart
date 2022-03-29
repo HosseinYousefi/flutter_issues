@@ -55,12 +55,11 @@ class IssueListRepo implements IIssueListRepo {
                   .map(
                     (label) => IssueLabel(
                       title: label.name,
-                      color: Color(
-                        int.parse(
-                          label.color,
-                          radix: 16,
-                        ),
-                      ),
+                      color: Color(0xFF000000 +
+                          int.parse(
+                            label.color,
+                            radix: 16,
+                          )),
                     ),
                   )
                   .toList(),

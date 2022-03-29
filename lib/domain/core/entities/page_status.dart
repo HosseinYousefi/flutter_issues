@@ -1,5 +1,6 @@
-import 'package:flutterissues/domain/core/entities/repo_failure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'repo_failure.dart';
 
 part 'page_status.freezed.dart';
 

@@ -1,5 +1,4 @@
-import 'package:flutterissues/domain/issue/issue_detail/entities/issue_detail.dart';
-
 import '../../core/repo.dart';
+import 'entities/issue_detail.dart';
 
 abstract class IIssueDetailRepo implements Repo<IssueDetail> {}

@@ -6,6 +6,8 @@ import '../../application/auth/auth_notifier.dart';
 import '../../application/settings/settings_notifier.dart';
 import 'app_route.dart';
 
+final currentRouteProvider = StateProvider((_) => const AppRoute.home());
+
 /// A very light-weight navigator 2.0 delegate.
 ///
 /// For more complex use cases, we can migrate to another solution like using
@@ -18,11 +20,14 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   @override
-  late AppRoute currentConfiguration;
+  AppRoute get currentConfiguration => ref.read(currentRouteProvider);
 
   AppRouterDelegate(this.ref) {
-    // Listening to changes in settings (for theme changes)
+    // Listening to changes in route, settings (for theme changes)
     // and in the state of authentication and rebuilding.
+    ref.listen(currentRouteProvider, (_, __) {
+      notifyListeners();
+    });
     ref.listen(authStateProvider, (_, __) {
       notifyListeners();
     });
@@ -57,8 +62,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
 
   @override
   Future<void> setNewRoutePath(AppRoute configuration) {
-    currentConfiguration = configuration;
-    notifyListeners();
+    ref.read(currentRouteProvider.notifier).state = configuration;
     return SynchronousFuture(() {}());
   }
 }

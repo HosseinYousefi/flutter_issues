@@ -1,8 +1,8 @@
 import 'package:ferry_hive_store/ferry_hive_store.dart';
-import 'package:flutterissues/infrastructure/core/gql_client.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../domain/auth/auth_interfaces.dart';
+import '../core/gql_client.dart';
 
 final authServiceProvider = Provider<IAuthService>((ref) {
   final store = ref.watch(storeProvider).asData!.value;

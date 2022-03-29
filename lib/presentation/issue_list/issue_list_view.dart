@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutterissues/application/auth/auth_form/auth_form_notifier.dart';
-import 'package:flutterissues/presentation/router/app_route.dart';
-import 'package:flutterissues/presentation/router/app_router_delegate.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../application/auth/auth_form/auth_form_notifier.dart';
 import '../../application/issue_list/issue_list_notifier.dart';
 import '../common/common_app_bar.dart';
+import '../router/app_route.dart';
+import '../router/app_router_delegate.dart';
+import 'widgets/issue_list_tile.dart';
 
 class IssueListView extends HookConsumerWidget {
   const IssueListView({Key? key}) : super(key: key);
@@ -66,15 +67,13 @@ class IssueListView extends HookConsumerWidget {
                 );
               }
               final issue = issueList.issues[index];
-              return ListTile(
+              return IssueListTile(
                 onTap: () {
-                  (Router.of(context).routerDelegate as AppRouterDelegate)
-                      .setNewRoutePath(
-                    AppRoute.issueDetail(number: issue.number),
-                  );
+                  ref.read(currentRouteProvider.notifier).state =
+                      AppRoute.issueDetail(number: issue.number);
                 },
                 key: ValueKey('Issue#${issue.number}'),
-                title: Text(issue.title),
+                issue: issue,
               );
             },
           );

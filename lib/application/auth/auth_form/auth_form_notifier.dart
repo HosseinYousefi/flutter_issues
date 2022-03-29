@@ -1,7 +1,7 @@
-import 'package:flutterissues/domain/auth/auth_interfaces.dart';
-import 'package:flutterissues/infrastructure/auth/auth_service.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../domain/auth/auth_interfaces.dart';
+import '../../../infrastructure/auth/auth_service.dart';
 import 'auth_form_state.dart';
 
 final authFormStateProvider =

@@ -1,5 +1,6 @@
-import 'package:flutterissues/domain/core/entities/page_status.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'page_status.dart';
 
 part 'page_info.freezed.dart';
 
