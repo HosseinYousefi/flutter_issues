@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../domain/core/entities/repo_failure.dart';
-import '../../domain/issue_list/entities/issue_list.dart';
+import '../../domain/issue/issue_list/entities/issue_list.dart';
 
 part 'issue_list_state.freezed.dart';
 

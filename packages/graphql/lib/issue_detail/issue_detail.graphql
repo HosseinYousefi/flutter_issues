@@ -1,0 +1,23 @@
+query IssueDetail($number: Int!) {
+  repository(name: "Flutter", owner: "Flutter") {
+    issue(number: $number) {
+      __typename
+      id
+      number
+      labels(first: 20) {
+        totalCount
+        nodes {
+          color
+          name
+        }
+      }
+      comments {
+        totalCount
+      }
+      title
+      state
+      createdAt
+      body
+    }
+  }
+}

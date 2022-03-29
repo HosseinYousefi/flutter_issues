@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterissues/application/settings/settings_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../application/auth/auth_notifier.dart';
+import '../../application/settings/settings_notifier.dart';
 import 'app_route.dart';
 
 /// A very light-weight navigator 2.0 delegate.
@@ -58,6 +58,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
   @override
   Future<void> setNewRoutePath(AppRoute configuration) {
     currentConfiguration = configuration;
+    notifyListeners();
     return SynchronousFuture(() {}());
   }
 }

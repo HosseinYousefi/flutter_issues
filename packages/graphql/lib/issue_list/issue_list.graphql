@@ -2,6 +2,7 @@ query IssueList($first: Int!, $after: String, $orderBy: IssueOrder = {field: CRE
   repository(name: "Flutter", owner: "Flutter") {
     issues(orderBy: $orderBy, first: $first, after: $after, filterBy: $filterBy) {
       nodes {
+        __typename
         id
         number
         labels(first: 20) {
@@ -21,8 +22,6 @@ query IssueList($first: Int!, $after: String, $orderBy: IssueOrder = {field: CRE
       pageInfo {
         endCursor
         hasNextPage
-        hasPreviousPage
-        startCursor
       }
     }
   }

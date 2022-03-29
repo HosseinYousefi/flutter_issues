@@ -19,6 +19,7 @@ dependencies:
   firebase_auth: ^3.3.11
   firebase_core: ^1.13.1
   flutter_hooks: ^0.18.2+1
+  flutter_markdown: ^0.6.9+1
   freezed_annotation: ^1.1.0
   github_sign_in: ^0.0.5-dev.4
   gql_http_link: ^0.4.2

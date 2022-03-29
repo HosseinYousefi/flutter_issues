@@ -1,8 +1,20 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart' show StandardJsonPlugin;
-import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
+import 'package:graphql/serializers/operation_serializer.dart'
     show OperationSerializer;
+import 'package:graphql/issue_detail/issue_detail.data.gql.dart'
+    show
+        GIssueDetailData,
+        GIssueDetailData_repository,
+        GIssueDetailData_repository_issue,
+        GIssueDetailData_repository_issue_comments,
+        GIssueDetailData_repository_issue_labels,
+        GIssueDetailData_repository_issue_labels_nodes;
+import 'package:graphql/issue_detail/issue_detail.req.gql.dart'
+    show GIssueDetailReq;
+import 'package:graphql/issue_detail/issue_detail.var.gql.dart'
+    show GIssueDetailVars;
 import 'package:graphql/issue_list/issue_list.data.gql.dart'
     show
         GIssueListData,
@@ -616,6 +628,14 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GIpAllowListForInstalledAppsEnabledSettingValue,
   GIssueCommentOrder,
   GIssueCommentOrderField,
+  GIssueDetailData,
+  GIssueDetailData_repository,
+  GIssueDetailData_repository_issue,
+  GIssueDetailData_repository_issue_comments,
+  GIssueDetailData_repository_issue_labels,
+  GIssueDetailData_repository_issue_labels_nodes,
+  GIssueDetailReq,
+  GIssueDetailVars,
   GIssueFilters,
   GIssueListData,
   GIssueListData_repository,

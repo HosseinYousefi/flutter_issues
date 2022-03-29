@@ -5,8 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../domain/core/entities/page_status.dart';
 import '../../domain/core/entities/repo_failure.dart';
-import '../../domain/issue_list/entities/issue_list.dart';
-import '../../domain/issue_list/issue_list_interfaces.dart';
+import '../../domain/issue/issue_list/entities/issue_list.dart';
+import '../../domain/issue/issue_list/issue_list_interfaces.dart';
 import '../../infrastructure/issue_list/issue_list_repo.dart';
 import 'issue_list_state.dart';
 

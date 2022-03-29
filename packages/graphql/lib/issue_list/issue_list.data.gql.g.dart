@@ -521,22 +521,12 @@ class _$GIssueListData_repository_issues_pageInfoSerializer
       'hasNextPage',
       serializers.serialize(object.hasNextPage,
           specifiedType: const FullType(bool)),
-      'hasPreviousPage',
-      serializers.serialize(object.hasPreviousPage,
-          specifiedType: const FullType(bool)),
     ];
     Object? value;
     value = object.endCursor;
     if (value != null) {
       result
         ..add('endCursor')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.startCursor;
-    if (value != null) {
-      result
-        ..add('startCursor')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -566,14 +556,6 @@ class _$GIssueListData_repository_issues_pageInfoSerializer
         case 'hasNextPage':
           result.hasNextPage = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
-          break;
-        case 'hasPreviousPage':
-          result.hasPreviousPage = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
-          break;
-        case 'startCursor':
-          result.startCursor = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -1563,10 +1545,6 @@ class _$GIssueListData_repository_issues_pageInfo
   final String? endCursor;
   @override
   final bool hasNextPage;
-  @override
-  final bool hasPreviousPage;
-  @override
-  final String? startCursor;
 
   factory _$GIssueListData_repository_issues_pageInfo(
           [void Function(GIssueListData_repository_issues_pageInfoBuilder)?
@@ -1575,18 +1553,12 @@ class _$GIssueListData_repository_issues_pageInfo
           .build();
 
   _$GIssueListData_repository_issues_pageInfo._(
-      {required this.G__typename,
-      this.endCursor,
-      required this.hasNextPage,
-      required this.hasPreviousPage,
-      this.startCursor})
+      {required this.G__typename, this.endCursor, required this.hasNextPage})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
         'GIssueListData_repository_issues_pageInfo', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(hasNextPage,
         'GIssueListData_repository_issues_pageInfo', 'hasNextPage');
-    BuiltValueNullFieldError.checkNotNull(hasPreviousPage,
-        'GIssueListData_repository_issues_pageInfo', 'hasPreviousPage');
   }
 
   @override
@@ -1605,19 +1577,13 @@ class _$GIssueListData_repository_issues_pageInfo
     return other is GIssueListData_repository_issues_pageInfo &&
         G__typename == other.G__typename &&
         endCursor == other.endCursor &&
-        hasNextPage == other.hasNextPage &&
-        hasPreviousPage == other.hasPreviousPage &&
-        startCursor == other.startCursor;
+        hasNextPage == other.hasNextPage;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, G__typename.hashCode), endCursor.hashCode),
-                hasNextPage.hashCode),
-            hasPreviousPage.hashCode),
-        startCursor.hashCode));
+    return $jf($jc($jc($jc(0, G__typename.hashCode), endCursor.hashCode),
+        hasNextPage.hashCode));
   }
 
   @override
@@ -1626,9 +1592,7 @@ class _$GIssueListData_repository_issues_pageInfo
             'GIssueListData_repository_issues_pageInfo')
           ..add('G__typename', G__typename)
           ..add('endCursor', endCursor)
-          ..add('hasNextPage', hasNextPage)
-          ..add('hasPreviousPage', hasPreviousPage)
-          ..add('startCursor', startCursor))
+          ..add('hasNextPage', hasNextPage))
         .toString();
   }
 }
@@ -1651,15 +1615,6 @@ class GIssueListData_repository_issues_pageInfoBuilder
   bool? get hasNextPage => _$this._hasNextPage;
   set hasNextPage(bool? hasNextPage) => _$this._hasNextPage = hasNextPage;
 
-  bool? _hasPreviousPage;
-  bool? get hasPreviousPage => _$this._hasPreviousPage;
-  set hasPreviousPage(bool? hasPreviousPage) =>
-      _$this._hasPreviousPage = hasPreviousPage;
-
-  String? _startCursor;
-  String? get startCursor => _$this._startCursor;
-  set startCursor(String? startCursor) => _$this._startCursor = startCursor;
-
   GIssueListData_repository_issues_pageInfoBuilder() {
     GIssueListData_repository_issues_pageInfo._initializeBuilder(this);
   }
@@ -1670,8 +1625,6 @@ class GIssueListData_repository_issues_pageInfoBuilder
       _G__typename = $v.G__typename;
       _endCursor = $v.endCursor;
       _hasNextPage = $v.hasNextPage;
-      _hasPreviousPage = $v.hasPreviousPage;
-      _startCursor = $v.startCursor;
       _$v = null;
     }
     return this;
@@ -1698,12 +1651,7 @@ class GIssueListData_repository_issues_pageInfoBuilder
                 'GIssueListData_repository_issues_pageInfo', 'G__typename'),
             endCursor: endCursor,
             hasNextPage: BuiltValueNullFieldError.checkNotNull(hasNextPage,
-                'GIssueListData_repository_issues_pageInfo', 'hasNextPage'),
-            hasPreviousPage: BuiltValueNullFieldError.checkNotNull(
-                hasPreviousPage,
-                'GIssueListData_repository_issues_pageInfo',
-                'hasPreviousPage'),
-            startCursor: startCursor);
+                'GIssueListData_repository_issues_pageInfo', 'hasNextPage'));
     replace(_$result);
     return _$result;
   }

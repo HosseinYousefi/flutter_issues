@@ -171,6 +171,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GIpAllowListForInstalledAppsEnabledSettingValue.serializer)
       ..add(GIssueCommentOrder.serializer)
       ..add(GIssueCommentOrderField.serializer)
+      ..add(GIssueDetailData.serializer)
+      ..add(GIssueDetailData_repository.serializer)
+      ..add(GIssueDetailData_repository_issue.serializer)
+      ..add(GIssueDetailData_repository_issue_comments.serializer)
+      ..add(GIssueDetailData_repository_issue_labels.serializer)
+      ..add(GIssueDetailData_repository_issue_labels_nodes.serializer)
+      ..add(GIssueDetailReq.serializer)
+      ..add(GIssueDetailVars.serializer)
       ..add(GIssueFilters.serializer)
       ..add(GIssueListData.serializer)
       ..add(GIssueListData_repository.serializer)
@@ -485,6 +493,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(GFileDeletion)]),
           () => new ListBuilder<GFileDeletion>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GIssueDetailData_repository_issue_labels_nodes)
+          ]),
+          () =>
+              new ListBuilder<GIssueDetailData_repository_issue_labels_nodes>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(GIssueListData_repository_issues_nodes)]),

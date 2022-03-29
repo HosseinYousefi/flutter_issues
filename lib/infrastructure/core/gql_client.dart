@@ -1,12 +1,12 @@
 import 'package:ferry/ferry.dart';
 import 'package:ferry_hive_store/ferry_hive_store.dart';
-import 'package:flutterissues/infrastructure/auth/auth_service.dart';
 import 'package:gql_http_link/gql_http_link.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 
 import '../../domain/core/entities/repo_failure.dart';
+import '../auth/auth_service.dart';
 
 final gitHubGqlEndpointProvider =
     Provider((_) => 'https://api.github.com/graphql');
@@ -66,5 +66,19 @@ extension LinkExceptionX on LinkException {
       return RepoFailure.serverException(message: message ?? 'Server Error');
     }
     return const RepoFailure.general();
+  }
+}
+
+extension OperationResponseX<S, T> on OperationResponse<S, T> {
+  /// Converts the linkException/graphQL errors into domain failures.
+  /// if there is no failure, returns null.
+  RepoFailure? getDomainFailure() {
+    if (hasErrors || data == null) {
+      if (linkException != null) {
+        return linkException!.toDomain();
+      }
+      return const RepoFailure.general();
+    }
+    return null;
   }
 }

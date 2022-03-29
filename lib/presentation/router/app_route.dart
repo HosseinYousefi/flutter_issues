@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutterissues/presentation/auth_form/auth_form_view.dart';
-import 'package:flutterissues/presentation/issue_detail/issue_detail_view.dart';
-import 'package:flutterissues/presentation/issue_list/issue_list_view.dart';
-import 'package:flutterissues/presentation/loading_screen/loading_screen.dart';
-import 'package:flutterissues/presentation/not_found/not_found_view.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../application/auth/auth_state.dart';
+import '../auth_form/auth_form_view.dart';
+import '../issue_detail/issue_detail_view.dart';
+import '../issue_list/issue_list_view.dart';
+import '../not_found/not_found_view.dart';
 
 part 'app_route.freezed.dart';
 

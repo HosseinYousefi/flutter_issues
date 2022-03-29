@@ -1,19 +1,19 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'issue_label.dart';
+import '../../entities/issue_label.dart';
+import '../../entities/issue_state.dart';
 
-part 'issue_list_item.freezed.dart';
-
-enum IssueState { open, closed }
+part 'issue_detail.freezed.dart';
 
 @freezed
-class IssueListItem with _$IssueListItem {
-  const factory IssueListItem({
+class IssueDetail with _$IssueDetail {
+  const factory IssueDetail({
     required int number,
     required String title,
     required int commentCount,
     required DateTime createdAt,
     required List<IssueLabel> labels,
     required IssueState state,
-  }) = _IssueListItem;
+    required String body,
+  }) = _IssueDetail;
 }

@@ -9,10 +9,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../domain/core/entities/page_info.dart';
 import '../../domain/core/entities/page_status.dart';
 import '../../domain/core/entities/repo_failure.dart';
-import '../../domain/issue_list/entities/issue_label.dart';
-import '../../domain/issue_list/entities/issue_list.dart';
-import '../../domain/issue_list/entities/issue_list_item.dart';
-import '../../domain/issue_list/issue_list_interfaces.dart';
+import '../../domain/issue/entities/issue_label.dart';
+import '../../domain/issue/entities/issue_state.dart';
+import '../../domain/issue/issue_list/entities/issue_list.dart';
+import '../../domain/issue/issue_list/entities/issue_list_item.dart';
+import '../../domain/issue/issue_list/issue_list_interfaces.dart';
 import '../core/gql_client.dart';
 
 final issueListRepoProvider = Provider<IIssueListRepo>((ref) {
@@ -25,7 +26,7 @@ class IssueListRepo implements IIssueListRepo {
 
   const IssueListRepo(this._client);
 
-  GIssueListReq get request => GIssueListReq(
+  GIssueListReq get _request => GIssueListReq(
         (b) => b
           ..requestId = 'issueList'
           ..vars.first = 10,
@@ -33,14 +34,10 @@ class IssueListRepo implements IIssueListRepo {
 
   @override
   Stream<Either<RepoFailure, IssueList>> watch() {
-    return _client.request(request).map((res) {
-      if (res.hasErrors || res.data == null) {
-        print(res.graphqlErrors);
-        print(res.linkException);
-        if (res.linkException != null) {
-          return left(res.linkException!.toDomain());
-        }
-        return left(const RepoFailure.general());
+    return _client.request(_request).map((res) {
+      final failure = res.getDomainFailure();
+      if (failure != null) {
+        return left(failure);
       }
       final issues = res.data!.repository!.issues;
       return right(
@@ -81,7 +78,7 @@ class IssueListRepo implements IIssueListRepo {
   @override
   void loadMore(String endCursor) {
     _client.requestController.add(
-      request.rebuild(
+      _request.rebuild(
         (r) => r
           ..vars.after = endCursor
           ..updateResult = (previous, result) =>

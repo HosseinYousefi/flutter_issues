@@ -214,8 +214,6 @@ abstract class GIssueListData_repository_issues_pageInfo
   String get G__typename;
   String? get endCursor;
   bool get hasNextPage;
-  bool get hasPreviousPage;
-  String? get startCursor;
   static Serializer<GIssueListData_repository_issues_pageInfo> get serializer =>
       _$gIssueListDataRepositoryIssuesPageInfoSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
