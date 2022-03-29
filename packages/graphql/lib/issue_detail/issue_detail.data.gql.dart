@@ -70,6 +70,7 @@ abstract class GIssueDetailData_repository_issue
   int get number;
   GIssueDetailData_repository_issue_labels? get labels;
   GIssueDetailData_repository_issue_comments get comments;
+  GIssueDetailData_repository_issue_author? get author;
   String get title;
   _i2.GIssueState get state;
   DateTime get createdAt;
@@ -166,4 +167,32 @@ abstract class GIssueDetailData_repository_issue_comments
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
           GIssueDetailData_repository_issue_comments.serializer, json);
+}
+
+abstract class GIssueDetailData_repository_issue_author
+    implements
+        Built<GIssueDetailData_repository_issue_author,
+            GIssueDetailData_repository_issue_authorBuilder> {
+  GIssueDetailData_repository_issue_author._();
+
+  factory GIssueDetailData_repository_issue_author(
+      [Function(GIssueDetailData_repository_issue_authorBuilder b)
+          updates]) = _$GIssueDetailData_repository_issue_author;
+
+  static void _initializeBuilder(
+          GIssueDetailData_repository_issue_authorBuilder b) =>
+      b..G__typename = 'Actor';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  String get login;
+  _i2.GURI get avatarUrl;
+  static Serializer<GIssueDetailData_repository_issue_author> get serializer =>
+      _$gIssueDetailDataRepositoryIssueAuthorSerializer;
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+          GIssueDetailData_repository_issue_author.serializer, this)
+      as Map<String, dynamic>);
+  static GIssueDetailData_repository_issue_author? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+          GIssueDetailData_repository_issue_author.serializer, json);
 }

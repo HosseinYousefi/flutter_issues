@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:dartz/dartz.dart';
 import 'package:ferry/ferry.dart';
 import 'package:graphql/issue_list/issue_list.dart';
@@ -17,6 +15,7 @@ import '../../domain/issue/issue_list/entities/issue_list_item.dart';
 import '../../domain/issue/issue_list/entities/issue_order.dart' as app;
 import '../../domain/issue/issue_list/issue_list_interfaces.dart';
 import '../core/gql_client.dart';
+import '../core/utils.dart';
 
 final issueListRepoProvider = Provider.autoDispose
     .family<IIssueListRepo, Tuple2<IssueFilter, app.IssueOrder>>(
@@ -87,11 +86,7 @@ class IssueListRepo implements IIssueListRepo {
                   .map(
                     (label) => IssueLabel(
                       title: label.name,
-                      color: Color(0xFF000000 +
-                          int.parse(
-                            label.color,
-                            radix: 16,
-                          )),
+                      color: InfraUtils.stringToColor(label.color),
                     ),
                   )
                   .toList(),

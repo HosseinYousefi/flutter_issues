@@ -25,6 +25,8 @@ class _$IssueDetailTearOff {
       required DateTime createdAt,
       required List<IssueLabel> labels,
       required IssueState state,
+      required String author,
+      required String authorPhoto,
       required String body}) {
     return _IssueDetail(
       number: number,
@@ -33,6 +35,8 @@ class _$IssueDetailTearOff {
       createdAt: createdAt,
       labels: labels,
       state: state,
+      author: author,
+      authorPhoto: authorPhoto,
       body: body,
     );
   }
@@ -49,6 +53,8 @@ mixin _$IssueDetail {
   DateTime get createdAt => throw _privateConstructorUsedError;
   List<IssueLabel> get labels => throw _privateConstructorUsedError;
   IssueState get state => throw _privateConstructorUsedError;
+  String get author => throw _privateConstructorUsedError;
+  String get authorPhoto => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -68,6 +74,8 @@ abstract class $IssueDetailCopyWith<$Res> {
       DateTime createdAt,
       List<IssueLabel> labels,
       IssueState state,
+      String author,
+      String authorPhoto,
       String body});
 }
 
@@ -87,6 +95,8 @@ class _$IssueDetailCopyWithImpl<$Res> implements $IssueDetailCopyWith<$Res> {
     Object? createdAt = freezed,
     Object? labels = freezed,
     Object? state = freezed,
+    Object? author = freezed,
+    Object? authorPhoto = freezed,
     Object? body = freezed,
   }) {
     return _then(_value.copyWith(
@@ -114,6 +124,14 @@ class _$IssueDetailCopyWithImpl<$Res> implements $IssueDetailCopyWith<$Res> {
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as IssueState,
+      author: author == freezed
+          ? _value.author
+          : author // ignore: cast_nullable_to_non_nullable
+              as String,
+      authorPhoto: authorPhoto == freezed
+          ? _value.authorPhoto
+          : authorPhoto // ignore: cast_nullable_to_non_nullable
+              as String,
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -136,6 +154,8 @@ abstract class _$IssueDetailCopyWith<$Res>
       DateTime createdAt,
       List<IssueLabel> labels,
       IssueState state,
+      String author,
+      String authorPhoto,
       String body});
 }
 
@@ -157,6 +177,8 @@ class __$IssueDetailCopyWithImpl<$Res> extends _$IssueDetailCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? labels = freezed,
     Object? state = freezed,
+    Object? author = freezed,
+    Object? authorPhoto = freezed,
     Object? body = freezed,
   }) {
     return _then(_IssueDetail(
@@ -184,6 +206,14 @@ class __$IssueDetailCopyWithImpl<$Res> extends _$IssueDetailCopyWithImpl<$Res>
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as IssueState,
+      author: author == freezed
+          ? _value.author
+          : author // ignore: cast_nullable_to_non_nullable
+              as String,
+      authorPhoto: authorPhoto == freezed
+          ? _value.authorPhoto
+          : authorPhoto // ignore: cast_nullable_to_non_nullable
+              as String,
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -202,6 +232,8 @@ class _$_IssueDetail implements _IssueDetail {
       required this.createdAt,
       required this.labels,
       required this.state,
+      required this.author,
+      required this.authorPhoto,
       required this.body});
 
   @override
@@ -217,11 +249,15 @@ class _$_IssueDetail implements _IssueDetail {
   @override
   final IssueState state;
   @override
+  final String author;
+  @override
+  final String authorPhoto;
+  @override
   final String body;
 
   @override
   String toString() {
-    return 'IssueDetail(number: $number, title: $title, commentCount: $commentCount, createdAt: $createdAt, labels: $labels, state: $state, body: $body)';
+    return 'IssueDetail(number: $number, title: $title, commentCount: $commentCount, createdAt: $createdAt, labels: $labels, state: $state, author: $author, authorPhoto: $authorPhoto, body: $body)';
   }
 
   @override
@@ -236,6 +272,9 @@ class _$_IssueDetail implements _IssueDetail {
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.labels, labels) &&
             const DeepCollectionEquality().equals(other.state, state) &&
+            const DeepCollectionEquality().equals(other.author, author) &&
+            const DeepCollectionEquality()
+                .equals(other.authorPhoto, authorPhoto) &&
             const DeepCollectionEquality().equals(other.body, body));
   }
 
@@ -248,6 +287,8 @@ class _$_IssueDetail implements _IssueDetail {
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(labels),
       const DeepCollectionEquality().hash(state),
+      const DeepCollectionEquality().hash(author),
+      const DeepCollectionEquality().hash(authorPhoto),
       const DeepCollectionEquality().hash(body));
 
   @JsonKey(ignore: true)
@@ -264,6 +305,8 @@ abstract class _IssueDetail implements IssueDetail {
       required DateTime createdAt,
       required List<IssueLabel> labels,
       required IssueState state,
+      required String author,
+      required String authorPhoto,
       required String body}) = _$_IssueDetail;
 
   @override
@@ -278,6 +321,10 @@ abstract class _IssueDetail implements IssueDetail {
   List<IssueLabel> get labels;
   @override
   IssueState get state;
+  @override
+  String get author;
+  @override
+  String get authorPhoto;
   @override
   String get body;
   @override

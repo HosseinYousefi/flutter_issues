@@ -8,6 +8,7 @@ import 'package:graphql/issue_detail/issue_detail.data.gql.dart'
         GIssueDetailData,
         GIssueDetailData_repository,
         GIssueDetailData_repository_issue,
+        GIssueDetailData_repository_issue_author,
         GIssueDetailData_repository_issue_comments,
         GIssueDetailData_repository_issue_labels,
         GIssueDetailData_repository_issue_labels_nodes;
@@ -631,6 +632,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GIssueDetailData,
   GIssueDetailData_repository,
   GIssueDetailData_repository_issue,
+  GIssueDetailData_repository_issue_author,
   GIssueDetailData_repository_issue_comments,
   GIssueDetailData_repository_issue_labels,
   GIssueDetailData_repository_issue_labels_nodes,

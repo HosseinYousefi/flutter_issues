@@ -22,6 +22,9 @@ Serializer<GIssueDetailData_repository_issue_labels_nodes>
 Serializer<GIssueDetailData_repository_issue_comments>
     _$gIssueDetailDataRepositoryIssueCommentsSerializer =
     new _$GIssueDetailData_repository_issue_commentsSerializer();
+Serializer<GIssueDetailData_repository_issue_author>
+    _$gIssueDetailDataRepositoryIssueAuthorSerializer =
+    new _$GIssueDetailData_repository_issue_authorSerializer();
 
 class _$GIssueDetailDataSerializer
     implements StructuredSerializer<GIssueDetailData> {
@@ -183,6 +186,14 @@ class _$GIssueDetailData_repository_issueSerializer
             specifiedType:
                 const FullType(GIssueDetailData_repository_issue_labels)));
     }
+    value = object.author;
+    if (value != null) {
+      result
+        ..add('author')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(GIssueDetailData_repository_issue_author)));
+    }
     return result;
   }
 
@@ -221,6 +232,12 @@ class _$GIssueDetailData_repository_issueSerializer
                   specifiedType: const FullType(
                       GIssueDetailData_repository_issue_comments))!
               as GIssueDetailData_repository_issue_comments);
+          break;
+        case 'author':
+          result.author.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(GIssueDetailData_repository_issue_author))!
+              as GIssueDetailData_repository_issue_author);
           break;
         case 'title':
           result.title = serializers.deserialize(value,
@@ -420,6 +437,66 @@ class _$GIssueDetailData_repository_issue_commentsSerializer
         case 'totalCount':
           result.totalCount = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GIssueDetailData_repository_issue_authorSerializer
+    implements StructuredSerializer<GIssueDetailData_repository_issue_author> {
+  @override
+  final Iterable<Type> types = const [
+    GIssueDetailData_repository_issue_author,
+    _$GIssueDetailData_repository_issue_author
+  ];
+  @override
+  final String wireName = 'GIssueDetailData_repository_issue_author';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GIssueDetailData_repository_issue_author object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'login',
+      serializers.serialize(object.login,
+          specifiedType: const FullType(String)),
+      'avatarUrl',
+      serializers.serialize(object.avatarUrl,
+          specifiedType: const FullType(_i2.GURI)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GIssueDetailData_repository_issue_author deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GIssueDetailData_repository_issue_authorBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'login':
+          result.login = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'avatarUrl':
+          result.avatarUrl.replace(serializers.deserialize(value,
+              specifiedType: const FullType(_i2.GURI))! as _i2.GURI);
           break;
       }
     }
@@ -664,6 +741,8 @@ class _$GIssueDetailData_repository_issue
   @override
   final GIssueDetailData_repository_issue_comments comments;
   @override
+  final GIssueDetailData_repository_issue_author? author;
+  @override
   final String title;
   @override
   final _i2.GIssueState state;
@@ -682,6 +761,7 @@ class _$GIssueDetailData_repository_issue
       required this.number,
       this.labels,
       required this.comments,
+      this.author,
       required this.title,
       required this.state,
       required this.createdAt,
@@ -723,6 +803,7 @@ class _$GIssueDetailData_repository_issue
         number == other.number &&
         labels == other.labels &&
         comments == other.comments &&
+        author == other.author &&
         title == other.title &&
         state == other.state &&
         createdAt == other.createdAt &&
@@ -737,10 +818,14 @@ class _$GIssueDetailData_repository_issue
                 $jc(
                     $jc(
                         $jc(
-                            $jc($jc($jc(0, G__typename.hashCode), id.hashCode),
-                                number.hashCode),
-                            labels.hashCode),
-                        comments.hashCode),
+                            $jc(
+                                $jc(
+                                    $jc($jc(0, G__typename.hashCode),
+                                        id.hashCode),
+                                    number.hashCode),
+                                labels.hashCode),
+                            comments.hashCode),
+                        author.hashCode),
                     title.hashCode),
                 state.hashCode),
             createdAt.hashCode),
@@ -755,6 +840,7 @@ class _$GIssueDetailData_repository_issue
           ..add('number', number)
           ..add('labels', labels)
           ..add('comments', comments)
+          ..add('author', author)
           ..add('title', title)
           ..add('state', state)
           ..add('createdAt', createdAt)
@@ -794,6 +880,12 @@ class GIssueDetailData_repository_issueBuilder
   set comments(GIssueDetailData_repository_issue_commentsBuilder? comments) =>
       _$this._comments = comments;
 
+  GIssueDetailData_repository_issue_authorBuilder? _author;
+  GIssueDetailData_repository_issue_authorBuilder get author =>
+      _$this._author ??= new GIssueDetailData_repository_issue_authorBuilder();
+  set author(GIssueDetailData_repository_issue_authorBuilder? author) =>
+      _$this._author = author;
+
   String? _title;
   String? get title => _$this._title;
   set title(String? title) => _$this._title = title;
@@ -822,6 +914,7 @@ class GIssueDetailData_repository_issueBuilder
       _number = $v.number;
       _labels = $v.labels?.toBuilder();
       _comments = $v.comments.toBuilder();
+      _author = $v.author?.toBuilder();
       _title = $v.title;
       _state = $v.state;
       _createdAt = $v.createdAt;
@@ -857,6 +950,7 @@ class GIssueDetailData_repository_issueBuilder
                   number, 'GIssueDetailData_repository_issue', 'number'),
               labels: _labels?.build(),
               comments: comments.build(),
+              author: _author?.build(),
               title: BuiltValueNullFieldError.checkNotNull(
                   title, 'GIssueDetailData_repository_issue', 'title'),
               state: BuiltValueNullFieldError.checkNotNull(
@@ -872,6 +966,8 @@ class GIssueDetailData_repository_issueBuilder
         _labels?.build();
         _$failedField = 'comments';
         comments.build();
+        _$failedField = 'author';
+        _author?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'GIssueDetailData_repository_issue', _$failedField, e.toString());
@@ -1252,6 +1348,142 @@ class GIssueDetailData_repository_issue_commentsBuilder
                 'GIssueDetailData_repository_issue_comments', 'G__typename'),
             totalCount: BuiltValueNullFieldError.checkNotNull(totalCount,
                 'GIssueDetailData_repository_issue_comments', 'totalCount'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GIssueDetailData_repository_issue_author
+    extends GIssueDetailData_repository_issue_author {
+  @override
+  final String G__typename;
+  @override
+  final String login;
+  @override
+  final _i2.GURI avatarUrl;
+
+  factory _$GIssueDetailData_repository_issue_author(
+          [void Function(GIssueDetailData_repository_issue_authorBuilder)?
+              updates]) =>
+      (new GIssueDetailData_repository_issue_authorBuilder()..update(updates))
+          .build();
+
+  _$GIssueDetailData_repository_issue_author._(
+      {required this.G__typename, required this.login, required this.avatarUrl})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GIssueDetailData_repository_issue_author', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        login, 'GIssueDetailData_repository_issue_author', 'login');
+    BuiltValueNullFieldError.checkNotNull(
+        avatarUrl, 'GIssueDetailData_repository_issue_author', 'avatarUrl');
+  }
+
+  @override
+  GIssueDetailData_repository_issue_author rebuild(
+          void Function(GIssueDetailData_repository_issue_authorBuilder)
+              updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GIssueDetailData_repository_issue_authorBuilder toBuilder() =>
+      new GIssueDetailData_repository_issue_authorBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GIssueDetailData_repository_issue_author &&
+        G__typename == other.G__typename &&
+        login == other.login &&
+        avatarUrl == other.avatarUrl;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(
+        $jc($jc(0, G__typename.hashCode), login.hashCode), avatarUrl.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(
+            'GIssueDetailData_repository_issue_author')
+          ..add('G__typename', G__typename)
+          ..add('login', login)
+          ..add('avatarUrl', avatarUrl))
+        .toString();
+  }
+}
+
+class GIssueDetailData_repository_issue_authorBuilder
+    implements
+        Builder<GIssueDetailData_repository_issue_author,
+            GIssueDetailData_repository_issue_authorBuilder> {
+  _$GIssueDetailData_repository_issue_author? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _login;
+  String? get login => _$this._login;
+  set login(String? login) => _$this._login = login;
+
+  _i2.GURIBuilder? _avatarUrl;
+  _i2.GURIBuilder get avatarUrl => _$this._avatarUrl ??= new _i2.GURIBuilder();
+  set avatarUrl(_i2.GURIBuilder? avatarUrl) => _$this._avatarUrl = avatarUrl;
+
+  GIssueDetailData_repository_issue_authorBuilder() {
+    GIssueDetailData_repository_issue_author._initializeBuilder(this);
+  }
+
+  GIssueDetailData_repository_issue_authorBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _login = $v.login;
+      _avatarUrl = $v.avatarUrl.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GIssueDetailData_repository_issue_author other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GIssueDetailData_repository_issue_author;
+  }
+
+  @override
+  void update(
+      void Function(GIssueDetailData_repository_issue_authorBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GIssueDetailData_repository_issue_author build() {
+    _$GIssueDetailData_repository_issue_author _$result;
+    try {
+      _$result = _$v ??
+          new _$GIssueDetailData_repository_issue_author._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                  'GIssueDetailData_repository_issue_author', 'G__typename'),
+              login: BuiltValueNullFieldError.checkNotNull(
+                  login, 'GIssueDetailData_repository_issue_author', 'login'),
+              avatarUrl: avatarUrl.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'avatarUrl';
+        avatarUrl.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'GIssueDetailData_repository_issue_author',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

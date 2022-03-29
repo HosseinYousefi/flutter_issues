@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-import '../../../domain/issue/entities/issue_state.dart';
 import '../../../domain/issue/issue_list/entities/issue_list_item.dart';
 import '../../common/issue_label_tile.dart';
+import '../../common/issue_state_icon.dart';
 
 class IssueListTile extends StatelessWidget {
   final IssueListItem issue;
@@ -25,14 +25,7 @@ class IssueListTile extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(
-              issue.state == IssueState.closed
-                  ? Icons.check_circle_outline_rounded
-                  : Icons.circle_outlined,
-              color: issue.state == IssueState.closed
-                  ? Colors.deepPurple
-                  : Colors.green,
-            ),
+            IssueStateIcon(state: issue.state),
             const SizedBox(width: 10),
             Expanded(
               child: Column(

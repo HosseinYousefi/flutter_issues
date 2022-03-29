@@ -14,6 +14,8 @@ class IssueDetail with _$IssueDetail {
     required DateTime createdAt,
     required List<IssueLabel> labels,
     required IssueState state,
+    required String author,
+    required String authorPhoto,
     required String body,
   }) = _IssueDetail;
 }
