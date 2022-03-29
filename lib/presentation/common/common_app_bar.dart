@@ -6,12 +6,16 @@ import '../../application/settings/settings_notifier.dart';
 class CommonAppBar extends HookConsumerWidget implements PreferredSizeWidget {
   final Widget title;
   final Widget? leading;
+  final PreferredSizeWidget? bottom;
 
-  const CommonAppBar({
+  CommonAppBar({
     required this.title,
     this.leading,
+    this.bottom,
     Key? key,
-  }) : super(key: key);
+  })  : preferredSize = Size.fromHeight(
+            kToolbarHeight + (bottom?.preferredSize.height ?? 0.0)),
+        super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,6 +24,7 @@ class CommonAppBar extends HookConsumerWidget implements PreferredSizeWidget {
     return AppBar(
       title: title,
       leading: leading,
+      bottom: bottom,
       centerTitle: true,
       actions: [
         IconButton(
@@ -35,5 +40,5 @@ class CommonAppBar extends HookConsumerWidget implements PreferredSizeWidget {
   }
 
   @override
-  final Size preferredSize = const Size.fromHeight(kToolbarHeight);
+  final Size preferredSize;
 }

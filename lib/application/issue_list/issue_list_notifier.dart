@@ -5,14 +5,17 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../domain/core/entities/page_status.dart';
 import '../../domain/core/entities/repo_failure.dart';
+import '../../domain/issue/issue_list/entities/issue_filter.dart';
 import '../../domain/issue/issue_list/entities/issue_list.dart';
+import '../../domain/issue/issue_list/entities/issue_order.dart';
 import '../../domain/issue/issue_list/issue_list_interfaces.dart';
 import '../../infrastructure/issue_list/issue_list_repo.dart';
 import 'issue_list_state.dart';
 
-final issueListStateProvider =
-    StateNotifierProvider<IssueListNotifier, IssueListState>((ref) {
-  final issueListRepo = ref.watch(issueListRepoProvider);
+final issueListStateProvider = StateNotifierProvider.autoDispose
+    .family<IssueListNotifier, IssueListState, Tuple2<IssueFilter, IssueOrder>>(
+        (ref, filterAndOrder) {
+  final issueListRepo = ref.watch(issueListRepoProvider(filterAndOrder));
   return IssueListNotifier(issueListRepo);
 });
 

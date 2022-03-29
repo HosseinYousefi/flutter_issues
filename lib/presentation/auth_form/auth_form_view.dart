@@ -13,8 +13,8 @@ class AuthFormView extends HookConsumerWidget {
     final notifier = ref.watch(authFormStateProvider.notifier);
 
     return Scaffold(
-      appBar: const CommonAppBar(
-        title: Text('Paste Your GitHub Token'),
+      appBar: CommonAppBar(
+        title: const Text('Paste Your GitHub Token'),
       ),
       body: Column(
         children: [
