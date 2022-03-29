@@ -3,7 +3,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../infrastructure/core/gql_client.dart';
 import 'loading_screen/loading_screen.dart';
-import 'router.dart';
+import 'router/app_route_information_parser.dart';
+import 'router/app_router_delegate.dart';
 
 /// This provider waits for all of the necessary parts of
 /// the application to load before turning false.
@@ -22,8 +23,8 @@ class App extends HookConsumerWidget {
       return const LoadingScreen();
     }
     return MaterialApp.router(
-      routerDelegate: AppRouterDelegate(),
-      routeInformationParser: const AppRouteInformationParser(),
+      routerDelegate: AppRouterDelegate(ref),
+      routeInformationParser: AppRouteInformationParser(ref),
     );
   }
 }

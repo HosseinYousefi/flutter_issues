@@ -20,7 +20,7 @@ final issueListRepoProvider = Provider<IIssueListRepo>((ref) {
   return IssueListRepo(client);
 });
 
-class IssueListRepo extends IIssueListRepo {
+class IssueListRepo implements IIssueListRepo {
   final TypedLink _client;
 
   const IssueListRepo(this._client);

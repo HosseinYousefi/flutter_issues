@@ -46,7 +46,7 @@ class IssueListNotifier extends StateNotifier<IssueListState> {
     });
   }
 
-  void loadMore() {
+  void moreLoaded() {
     scheduleMicrotask(() {
       // Not changing the state during the build
       state.maybeWhen(

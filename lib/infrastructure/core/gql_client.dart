@@ -33,7 +33,7 @@ class AuthHttpClient extends http.BaseClient {
 
 final authHttpClientProvider = Provider((_) => AuthHttpClient());
 
-/// Provider for [Ferry].
+/// Provider for [TypedLink]. Used for GraphQL requests.
 ///
 /// Depends on:
 /// * storeProvider

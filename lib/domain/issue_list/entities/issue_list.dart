@@ -1,7 +1,6 @@
-import 'package:dartz/dartz.dart';
-import 'package:flutterissues/domain/core/entities/page_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../core/entities/page_info.dart';
 import 'issue_list_item.dart';
 
 part 'issue_list.freezed.dart';
