@@ -24,14 +24,14 @@ class _$IssueListItemTearOff {
       required int commentCount,
       required DateTime createdAt,
       required IList<IssueLabel> labels,
-      required IssueStatus status}) {
+      required IssueState state}) {
     return _IssueListItem(
       number: number,
       title: title,
       commentCount: commentCount,
       createdAt: createdAt,
       labels: labels,
-      status: status,
+      state: state,
     );
   }
 }
@@ -46,7 +46,7 @@ mixin _$IssueListItem {
   int get commentCount => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   IList<IssueLabel> get labels => throw _privateConstructorUsedError;
-  IssueStatus get status => throw _privateConstructorUsedError;
+  IssueState get state => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $IssueListItemCopyWith<IssueListItem> get copyWith =>
@@ -64,7 +64,7 @@ abstract class $IssueListItemCopyWith<$Res> {
       int commentCount,
       DateTime createdAt,
       IList<IssueLabel> labels,
-      IssueStatus status});
+      IssueState state});
 }
 
 /// @nodoc
@@ -83,7 +83,7 @@ class _$IssueListItemCopyWithImpl<$Res>
     Object? commentCount = freezed,
     Object? createdAt = freezed,
     Object? labels = freezed,
-    Object? status = freezed,
+    Object? state = freezed,
   }) {
     return _then(_value.copyWith(
       number: number == freezed
@@ -106,10 +106,10 @@ class _$IssueListItemCopyWithImpl<$Res>
           ? _value.labels
           : labels // ignore: cast_nullable_to_non_nullable
               as IList<IssueLabel>,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as IssueStatus,
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as IssueState,
     ));
   }
 }
@@ -127,7 +127,7 @@ abstract class _$IssueListItemCopyWith<$Res>
       int commentCount,
       DateTime createdAt,
       IList<IssueLabel> labels,
-      IssueStatus status});
+      IssueState state});
 }
 
 /// @nodoc
@@ -148,7 +148,7 @@ class __$IssueListItemCopyWithImpl<$Res>
     Object? commentCount = freezed,
     Object? createdAt = freezed,
     Object? labels = freezed,
-    Object? status = freezed,
+    Object? state = freezed,
   }) {
     return _then(_IssueListItem(
       number: number == freezed
@@ -171,10 +171,10 @@ class __$IssueListItemCopyWithImpl<$Res>
           ? _value.labels
           : labels // ignore: cast_nullable_to_non_nullable
               as IList<IssueLabel>,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as IssueStatus,
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as IssueState,
     ));
   }
 }
@@ -188,7 +188,7 @@ class _$_IssueListItem implements _IssueListItem {
       required this.commentCount,
       required this.createdAt,
       required this.labels,
-      required this.status});
+      required this.state});
 
   @override
   final int number;
@@ -201,11 +201,11 @@ class _$_IssueListItem implements _IssueListItem {
   @override
   final IList<IssueLabel> labels;
   @override
-  final IssueStatus status;
+  final IssueState state;
 
   @override
   String toString() {
-    return 'IssueListItem(number: $number, title: $title, commentCount: $commentCount, createdAt: $createdAt, labels: $labels, status: $status)';
+    return 'IssueListItem(number: $number, title: $title, commentCount: $commentCount, createdAt: $createdAt, labels: $labels, state: $state)';
   }
 
   @override
@@ -219,7 +219,7 @@ class _$_IssueListItem implements _IssueListItem {
                 .equals(other.commentCount, commentCount) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.labels, labels) &&
-            const DeepCollectionEquality().equals(other.status, status));
+            const DeepCollectionEquality().equals(other.state, state));
   }
 
   @override
@@ -230,7 +230,7 @@ class _$_IssueListItem implements _IssueListItem {
       const DeepCollectionEquality().hash(commentCount),
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(labels),
-      const DeepCollectionEquality().hash(status));
+      const DeepCollectionEquality().hash(state));
 
   @JsonKey(ignore: true)
   @override
@@ -245,7 +245,7 @@ abstract class _IssueListItem implements IssueListItem {
       required int commentCount,
       required DateTime createdAt,
       required IList<IssueLabel> labels,
-      required IssueStatus status}) = _$_IssueListItem;
+      required IssueState state}) = _$_IssueListItem;
 
   @override
   int get number;
@@ -258,7 +258,7 @@ abstract class _IssueListItem implements IssueListItem {
   @override
   IList<IssueLabel> get labels;
   @override
-  IssueStatus get status;
+  IssueState get state;
   @override
   @JsonKey(ignore: true)
   _$IssueListItemCopyWith<_IssueListItem> get copyWith =>

@@ -8299,7 +8299,7 @@ class _$GChangeUserStatusInputSerializer
       result
         ..add('expiresAt')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(GDateTime)));
+            specifiedType: const FullType(DateTime)));
     }
     value = object.limitedAvailability;
     if (value != null) {
@@ -8346,8 +8346,8 @@ class _$GChangeUserStatusInputSerializer
               specifiedType: const FullType(String)) as String?;
           break;
         case 'expiresAt':
-          result.expiresAt.replace(serializers.deserialize(value,
-              specifiedType: const FullType(GDateTime))! as GDateTime);
+          result.expiresAt = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'limitedAvailability':
           result.limitedAvailability = serializers.deserialize(value,
@@ -10221,7 +10221,7 @@ class _$GCreateCheckRunInputSerializer
       result
         ..add('completedAt')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(GDateTime)));
+            specifiedType: const FullType(DateTime)));
     }
     value = object.conclusion;
     if (value != null) {
@@ -10256,7 +10256,7 @@ class _$GCreateCheckRunInputSerializer
       result
         ..add('startedAt')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(GDateTime)));
+            specifiedType: const FullType(DateTime)));
     }
     value = object.status;
     if (value != null) {
@@ -10291,8 +10291,8 @@ class _$GCreateCheckRunInputSerializer
               specifiedType: const FullType(String)) as String?;
           break;
         case 'completedAt':
-          result.completedAt.replace(serializers.deserialize(value,
-              specifiedType: const FullType(GDateTime))! as GDateTime);
+          result.completedAt = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'conclusion':
           result.conclusion = serializers.deserialize(value,
@@ -10325,8 +10325,8 @@ class _$GCreateCheckRunInputSerializer
               specifiedType: const FullType(String)) as String;
           break;
         case 'startedAt':
-          result.startedAt.replace(serializers.deserialize(value,
-              specifiedType: const FullType(GDateTime))! as GDateTime);
+          result.startedAt = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'status':
           result.status = serializers.deserialize(value,
@@ -15589,7 +15589,7 @@ class _$GIssueFiltersSerializer implements StructuredSerializer<GIssueFilters> {
       result
         ..add('since')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(GDateTime)));
+            specifiedType: const FullType(DateTime)));
     }
     value = object.states;
     if (value != null) {
@@ -15648,8 +15648,8 @@ class _$GIssueFiltersSerializer implements StructuredSerializer<GIssueFilters> {
               specifiedType: const FullType(String)) as String?;
           break;
         case 'since':
-          result.since.replace(serializers.deserialize(value,
-              specifiedType: const FullType(GDateTime))! as GDateTime);
+          result.since = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'states':
           result.states.replace(serializers.deserialize(value,
@@ -23488,7 +23488,7 @@ class _$GUpdateCheckRunInputSerializer
       result
         ..add('completedAt')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(GDateTime)));
+            specifiedType: const FullType(DateTime)));
     }
     value = object.conclusion;
     if (value != null) {
@@ -23530,7 +23530,7 @@ class _$GUpdateCheckRunInputSerializer
       result
         ..add('startedAt')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(GDateTime)));
+            specifiedType: const FullType(DateTime)));
     }
     value = object.status;
     if (value != null) {
@@ -23569,8 +23569,8 @@ class _$GUpdateCheckRunInputSerializer
               specifiedType: const FullType(String)) as String?;
           break;
         case 'completedAt':
-          result.completedAt.replace(serializers.deserialize(value,
-              specifiedType: const FullType(GDateTime))! as GDateTime);
+          result.completedAt = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'conclusion':
           result.conclusion = serializers.deserialize(value,
@@ -23599,8 +23599,8 @@ class _$GUpdateCheckRunInputSerializer
               specifiedType: const FullType(String)) as String;
           break;
         case 'startedAt':
-          result.startedAt.replace(serializers.deserialize(value,
-              specifiedType: const FullType(GDateTime))! as GDateTime);
+          result.startedAt = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'status':
           result.status = serializers.deserialize(value,
@@ -30647,7 +30647,7 @@ class _$GChangeUserStatusInput extends GChangeUserStatusInput {
   @override
   final String? emoji;
   @override
-  final GDateTime? expiresAt;
+  final DateTime? expiresAt;
   @override
   final bool? limitedAvailability;
   @override
@@ -30727,10 +30727,9 @@ class GChangeUserStatusInputBuilder
   String? get emoji => _$this._emoji;
   set emoji(String? emoji) => _$this._emoji = emoji;
 
-  GDateTimeBuilder? _expiresAt;
-  GDateTimeBuilder get expiresAt =>
-      _$this._expiresAt ??= new GDateTimeBuilder();
-  set expiresAt(GDateTimeBuilder? expiresAt) => _$this._expiresAt = expiresAt;
+  DateTime? _expiresAt;
+  DateTime? get expiresAt => _$this._expiresAt;
+  set expiresAt(DateTime? expiresAt) => _$this._expiresAt = expiresAt;
 
   bool? _limitedAvailability;
   bool? get limitedAvailability => _$this._limitedAvailability;
@@ -30753,7 +30752,7 @@ class GChangeUserStatusInputBuilder
     if ($v != null) {
       _clientMutationId = $v.clientMutationId;
       _emoji = $v.emoji;
-      _expiresAt = $v.expiresAt?.toBuilder();
+      _expiresAt = $v.expiresAt;
       _limitedAvailability = $v.limitedAvailability;
       _message = $v.message;
       _organizationId = $v.organizationId;
@@ -30775,27 +30774,14 @@ class GChangeUserStatusInputBuilder
 
   @override
   _$GChangeUserStatusInput build() {
-    _$GChangeUserStatusInput _$result;
-    try {
-      _$result = _$v ??
-          new _$GChangeUserStatusInput._(
-              clientMutationId: clientMutationId,
-              emoji: emoji,
-              expiresAt: _expiresAt?.build(),
-              limitedAvailability: limitedAvailability,
-              message: message,
-              organizationId: organizationId);
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'expiresAt';
-        _expiresAt?.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'GChangeUserStatusInput', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result = _$v ??
+        new _$GChangeUserStatusInput._(
+            clientMutationId: clientMutationId,
+            emoji: emoji,
+            expiresAt: expiresAt,
+            limitedAvailability: limitedAvailability,
+            message: message,
+            organizationId: organizationId);
     replace(_$result);
     return _$result;
   }
@@ -33565,7 +33551,7 @@ class _$GCreateCheckRunInput extends GCreateCheckRunInput {
   @override
   final String? clientMutationId;
   @override
-  final GDateTime? completedAt;
+  final DateTime? completedAt;
   @override
   final GCheckConclusionState? conclusion;
   @override
@@ -33581,7 +33567,7 @@ class _$GCreateCheckRunInput extends GCreateCheckRunInput {
   @override
   final String repositoryId;
   @override
-  final GDateTime? startedAt;
+  final DateTime? startedAt;
   @override
   final GRequestableCheckStatusState? status;
 
@@ -33697,11 +33683,9 @@ class GCreateCheckRunInputBuilder
   set clientMutationId(String? clientMutationId) =>
       _$this._clientMutationId = clientMutationId;
 
-  GDateTimeBuilder? _completedAt;
-  GDateTimeBuilder get completedAt =>
-      _$this._completedAt ??= new GDateTimeBuilder();
-  set completedAt(GDateTimeBuilder? completedAt) =>
-      _$this._completedAt = completedAt;
+  DateTime? _completedAt;
+  DateTime? get completedAt => _$this._completedAt;
+  set completedAt(DateTime? completedAt) => _$this._completedAt = completedAt;
 
   GCheckConclusionState? _conclusion;
   GCheckConclusionState? get conclusion => _$this._conclusion;
@@ -33734,10 +33718,9 @@ class GCreateCheckRunInputBuilder
   String? get repositoryId => _$this._repositoryId;
   set repositoryId(String? repositoryId) => _$this._repositoryId = repositoryId;
 
-  GDateTimeBuilder? _startedAt;
-  GDateTimeBuilder get startedAt =>
-      _$this._startedAt ??= new GDateTimeBuilder();
-  set startedAt(GDateTimeBuilder? startedAt) => _$this._startedAt = startedAt;
+  DateTime? _startedAt;
+  DateTime? get startedAt => _$this._startedAt;
+  set startedAt(DateTime? startedAt) => _$this._startedAt = startedAt;
 
   GRequestableCheckStatusState? _status;
   GRequestableCheckStatusState? get status => _$this._status;
@@ -33750,7 +33733,7 @@ class GCreateCheckRunInputBuilder
     if ($v != null) {
       _actions = $v.actions?.toBuilder();
       _clientMutationId = $v.clientMutationId;
-      _completedAt = $v.completedAt?.toBuilder();
+      _completedAt = $v.completedAt;
       _conclusion = $v.conclusion;
       _detailsUrl = $v.detailsUrl?.toBuilder();
       _externalId = $v.externalId;
@@ -33758,7 +33741,7 @@ class GCreateCheckRunInputBuilder
       _name = $v.name;
       _output = $v.output?.toBuilder();
       _repositoryId = $v.repositoryId;
-      _startedAt = $v.startedAt?.toBuilder();
+      _startedAt = $v.startedAt;
       _status = $v.status;
       _$v = null;
     }
@@ -33784,7 +33767,7 @@ class GCreateCheckRunInputBuilder
           new _$GCreateCheckRunInput._(
               actions: _actions?.build(),
               clientMutationId: clientMutationId,
-              completedAt: _completedAt?.build(),
+              completedAt: completedAt,
               conclusion: conclusion,
               detailsUrl: _detailsUrl?.build(),
               externalId: externalId,
@@ -33794,16 +33777,13 @@ class GCreateCheckRunInputBuilder
               output: _output?.build(),
               repositoryId: BuiltValueNullFieldError.checkNotNull(
                   repositoryId, 'GCreateCheckRunInput', 'repositoryId'),
-              startedAt: _startedAt?.build(),
+              startedAt: startedAt,
               status: status);
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'actions';
         _actions?.build();
-
-        _$failedField = 'completedAt';
-        _completedAt?.build();
 
         _$failedField = 'detailsUrl';
         _detailsUrl?.build();
@@ -33813,9 +33793,6 @@ class GCreateCheckRunInputBuilder
 
         _$failedField = 'output';
         _output?.build();
-
-        _$failedField = 'startedAt';
-        _startedAt?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'GCreateCheckRunInput', _$failedField, e.toString());
@@ -36855,82 +36832,6 @@ class GDateBuilder implements Builder<GDate, GDateBuilder> {
         new _$GDate._(
             value:
                 BuiltValueNullFieldError.checkNotNull(value, 'GDate', 'value'));
-    replace(_$result);
-    return _$result;
-  }
-}
-
-class _$GDateTime extends GDateTime {
-  @override
-  final String value;
-
-  factory _$GDateTime([void Function(GDateTimeBuilder)? updates]) =>
-      (new GDateTimeBuilder()..update(updates)).build();
-
-  _$GDateTime._({required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(value, 'GDateTime', 'value');
-  }
-
-  @override
-  GDateTime rebuild(void Function(GDateTimeBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  GDateTimeBuilder toBuilder() => new GDateTimeBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is GDateTime && value == other.value;
-  }
-
-  @override
-  int get hashCode {
-    return $jf($jc(0, value.hashCode));
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper('GDateTime')..add('value', value))
-        .toString();
-  }
-}
-
-class GDateTimeBuilder implements Builder<GDateTime, GDateTimeBuilder> {
-  _$GDateTime? _$v;
-
-  String? _value;
-  String? get value => _$this._value;
-  set value(String? value) => _$this._value = value;
-
-  GDateTimeBuilder();
-
-  GDateTimeBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _value = $v.value;
-      _$v = null;
-    }
-    return this;
-  }
-
-  @override
-  void replace(GDateTime other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GDateTime;
-  }
-
-  @override
-  void update(void Function(GDateTimeBuilder)? updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  _$GDateTime build() {
-    final _$result = _$v ??
-        new _$GDateTime._(
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, 'GDateTime', 'value'));
     replace(_$result);
     return _$result;
   }
@@ -42226,7 +42127,7 @@ class _$GIssueFilters extends GIssueFilters {
   @override
   final String? milestoneNumber;
   @override
-  final GDateTime? since;
+  final DateTime? since;
   @override
   final BuiltList<GIssueState>? states;
   @override
@@ -42335,9 +42236,9 @@ class GIssueFiltersBuilder
   set milestoneNumber(String? milestoneNumber) =>
       _$this._milestoneNumber = milestoneNumber;
 
-  GDateTimeBuilder? _since;
-  GDateTimeBuilder get since => _$this._since ??= new GDateTimeBuilder();
-  set since(GDateTimeBuilder? since) => _$this._since = since;
+  DateTime? _since;
+  DateTime? get since => _$this._since;
+  set since(DateTime? since) => _$this._since = since;
 
   ListBuilder<GIssueState>? _states;
   ListBuilder<GIssueState> get states =>
@@ -42360,7 +42261,7 @@ class GIssueFiltersBuilder
       _mentioned = $v.mentioned;
       _milestone = $v.milestone;
       _milestoneNumber = $v.milestoneNumber;
-      _since = $v.since?.toBuilder();
+      _since = $v.since;
       _states = $v.states?.toBuilder();
       _viewerSubscribed = $v.viewerSubscribed;
       _$v = null;
@@ -42391,7 +42292,7 @@ class GIssueFiltersBuilder
               mentioned: mentioned,
               milestone: milestone,
               milestoneNumber: milestoneNumber,
-              since: _since?.build(),
+              since: since,
               states: _states?.build(),
               viewerSubscribed: viewerSubscribed);
     } catch (_) {
@@ -42400,8 +42301,6 @@ class GIssueFiltersBuilder
         _$failedField = 'labels';
         _labels?.build();
 
-        _$failedField = 'since';
-        _since?.build();
         _$failedField = 'states';
         _states?.build();
       } catch (e) {
@@ -52292,7 +52191,7 @@ class _$GUpdateCheckRunInput extends GUpdateCheckRunInput {
   @override
   final String? clientMutationId;
   @override
-  final GDateTime? completedAt;
+  final DateTime? completedAt;
   @override
   final GCheckConclusionState? conclusion;
   @override
@@ -52306,7 +52205,7 @@ class _$GUpdateCheckRunInput extends GUpdateCheckRunInput {
   @override
   final String repositoryId;
   @override
-  final GDateTime? startedAt;
+  final DateTime? startedAt;
   @override
   final GRequestableCheckStatusState? status;
 
@@ -52425,11 +52324,9 @@ class GUpdateCheckRunInputBuilder
   set clientMutationId(String? clientMutationId) =>
       _$this._clientMutationId = clientMutationId;
 
-  GDateTimeBuilder? _completedAt;
-  GDateTimeBuilder get completedAt =>
-      _$this._completedAt ??= new GDateTimeBuilder();
-  set completedAt(GDateTimeBuilder? completedAt) =>
-      _$this._completedAt = completedAt;
+  DateTime? _completedAt;
+  DateTime? get completedAt => _$this._completedAt;
+  set completedAt(DateTime? completedAt) => _$this._completedAt = completedAt;
 
   GCheckConclusionState? _conclusion;
   GCheckConclusionState? get conclusion => _$this._conclusion;
@@ -52457,10 +52354,9 @@ class GUpdateCheckRunInputBuilder
   String? get repositoryId => _$this._repositoryId;
   set repositoryId(String? repositoryId) => _$this._repositoryId = repositoryId;
 
-  GDateTimeBuilder? _startedAt;
-  GDateTimeBuilder get startedAt =>
-      _$this._startedAt ??= new GDateTimeBuilder();
-  set startedAt(GDateTimeBuilder? startedAt) => _$this._startedAt = startedAt;
+  DateTime? _startedAt;
+  DateTime? get startedAt => _$this._startedAt;
+  set startedAt(DateTime? startedAt) => _$this._startedAt = startedAt;
 
   GRequestableCheckStatusState? _status;
   GRequestableCheckStatusState? get status => _$this._status;
@@ -52474,14 +52370,14 @@ class GUpdateCheckRunInputBuilder
       _actions = $v.actions?.toBuilder();
       _checkRunId = $v.checkRunId;
       _clientMutationId = $v.clientMutationId;
-      _completedAt = $v.completedAt?.toBuilder();
+      _completedAt = $v.completedAt;
       _conclusion = $v.conclusion;
       _detailsUrl = $v.detailsUrl?.toBuilder();
       _externalId = $v.externalId;
       _name = $v.name;
       _output = $v.output?.toBuilder();
       _repositoryId = $v.repositoryId;
-      _startedAt = $v.startedAt?.toBuilder();
+      _startedAt = $v.startedAt;
       _status = $v.status;
       _$v = null;
     }
@@ -52509,7 +52405,7 @@ class GUpdateCheckRunInputBuilder
               checkRunId: BuiltValueNullFieldError.checkNotNull(
                   checkRunId, 'GUpdateCheckRunInput', 'checkRunId'),
               clientMutationId: clientMutationId,
-              completedAt: _completedAt?.build(),
+              completedAt: completedAt,
               conclusion: conclusion,
               detailsUrl: _detailsUrl?.build(),
               externalId: externalId,
@@ -52517,7 +52413,7 @@ class GUpdateCheckRunInputBuilder
               output: _output?.build(),
               repositoryId: BuiltValueNullFieldError.checkNotNull(
                   repositoryId, 'GUpdateCheckRunInput', 'repositoryId'),
-              startedAt: _startedAt?.build(),
+              startedAt: startedAt,
               status: status);
     } catch (_) {
       late String _$failedField;
@@ -52525,17 +52421,11 @@ class GUpdateCheckRunInputBuilder
         _$failedField = 'actions';
         _actions?.build();
 
-        _$failedField = 'completedAt';
-        _completedAt?.build();
-
         _$failedField = 'detailsUrl';
         _detailsUrl?.build();
 
         _$failedField = 'output';
         _output?.build();
-
-        _$failedField = 'startedAt';
-        _startedAt?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'GUpdateCheckRunInput', _$failedField, e.toString());

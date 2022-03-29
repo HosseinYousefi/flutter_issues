@@ -580,7 +580,7 @@ abstract class GChangeUserStatusInput
 
   String? get clientMutationId;
   String? get emoji;
-  GDateTime? get expiresAt;
+  DateTime? get expiresAt;
   bool? get limitedAvailability;
   String? get message;
   String? get organizationId;
@@ -1269,7 +1269,7 @@ abstract class GCreateCheckRunInput
 
   BuiltList<GCheckRunAction>? get actions;
   String? get clientMutationId;
-  GDateTime? get completedAt;
+  DateTime? get completedAt;
   GCheckConclusionState? get conclusion;
   GURI? get detailsUrl;
   String? get externalId;
@@ -1277,7 +1277,7 @@ abstract class GCreateCheckRunInput
   String get name;
   GCheckRunOutput? get output;
   String get repositoryId;
-  GDateTime? get startedAt;
+  DateTime? get startedAt;
   GRequestableCheckStatusState? get status;
   static Serializer<GCreateCheckRunInput> get serializer =>
       _$gCreateCheckRunInputSerializer;
@@ -1726,19 +1726,6 @@ abstract class GDate implements Built<GDate, GDateBuilder> {
   @BuiltValueSerializer(custom: true)
   static Serializer<GDate> get serializer => _i2.DefaultScalarSerializer<GDate>(
       (Object serialized) => GDate((serialized as String?)));
-}
-
-abstract class GDateTime implements Built<GDateTime, GDateTimeBuilder> {
-  GDateTime._();
-
-  factory GDateTime([String? value]) =>
-      _$GDateTime((b) => value != null ? (b..value = value) : b);
-
-  String get value;
-  @BuiltValueSerializer(custom: true)
-  static Serializer<GDateTime> get serializer =>
-      _i2.DefaultScalarSerializer<GDateTime>(
-          (Object serialized) => GDateTime((serialized as String?)));
 }
 
 abstract class GDeclineTopicSuggestionInput
@@ -3489,7 +3476,7 @@ abstract class GIssueFilters
   String? get mentioned;
   String? get milestone;
   String? get milestoneNumber;
-  GDateTime? get since;
+  DateTime? get since;
   BuiltList<GIssueState>? get states;
   bool? get viewerSubscribed;
   static Serializer<GIssueFilters> get serializer => _$gIssueFiltersSerializer;
@@ -7781,14 +7768,14 @@ abstract class GUpdateCheckRunInput
   BuiltList<GCheckRunAction>? get actions;
   String get checkRunId;
   String? get clientMutationId;
-  GDateTime? get completedAt;
+  DateTime? get completedAt;
   GCheckConclusionState? get conclusion;
   GURI? get detailsUrl;
   String? get externalId;
   String? get name;
   GCheckRunOutput? get output;
   String get repositoryId;
-  GDateTime? get startedAt;
+  DateTime? get startedAt;
   GRequestableCheckStatusState? get status;
   static Serializer<GUpdateCheckRunInput> get serializer =>
       _$gUpdateCheckRunInputSerializer;

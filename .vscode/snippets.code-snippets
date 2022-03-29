@@ -15,5 +15,18 @@
 			""
 		],
 		"description": "New entity"
+	},
+	"New GraphQL Operation": {
+		"prefix": "/gql",
+		"scope": "dart",
+		"body": [
+      "library ${TM_FILENAME_BASE};",
+      "",
+      "export '${TM_FILENAME_BASE}.data.gql.dart';",
+      "export '${TM_FILENAME_BASE}.req.gql.dart';",
+      "export '${TM_FILENAME_BASE}.var.gql.dart';",
+      ""
+    ],
+		"description": "New GraphQL Operation"
 	}
 }

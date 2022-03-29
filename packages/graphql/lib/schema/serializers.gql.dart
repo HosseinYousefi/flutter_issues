@@ -3,6 +3,18 @@ import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart' show StandardJsonPlugin;
 import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
     show OperationSerializer;
+import 'package:graphql/issue_list/issue_list.data.gql.dart'
+    show
+        GIssueListData,
+        GIssueListData_repository,
+        GIssueListData_repository_issues,
+        GIssueListData_repository_issues_nodes,
+        GIssueListData_repository_issues_nodes_comments,
+        GIssueListData_repository_issues_nodes_labels,
+        GIssueListData_repository_issues_nodes_labels_nodes,
+        GIssueListData_repository_issues_pageInfo;
+import 'package:graphql/issue_list/issue_list.req.gql.dart' show GIssueListReq;
+import 'package:graphql/issue_list/issue_list.var.gql.dart' show GIssueListVars;
 import 'package:graphql/schema/schema.schema.gql.dart'
     show
         GAbortQueuedMigrationsInput,
@@ -83,7 +95,6 @@ import 'package:graphql/schema/schema.schema.gql.dart'
         GCreateTeamDiscussionCommentInput,
         GCreateTeamDiscussionInput,
         GDate,
-        GDateTime,
         GDeclineTopicSuggestionInput,
         GDefaultRepositoryPermissionField,
         GDeleteBranchProtectionRuleInput,
@@ -431,11 +442,14 @@ import 'package:graphql/schema/schema.schema.gql.dart'
         GVerifiableDomainOrderField,
         GVerifyVerifiableDomainInput,
         GX509Certificate;
+import 'package:graphql/serializers/date_time_serializer.dart'
+    show DateTimeSerializer;
 
 part 'serializers.gql.g.dart';
 
 final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(OperationSerializer())
+  ..add(DateTimeSerializer())
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
   GAbortQueuedMigrationsInput,
@@ -516,7 +530,6 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GCreateTeamDiscussionCommentInput,
   GCreateTeamDiscussionInput,
   GDate,
-  GDateTime,
   GDeclineTopicSuggestionInput,
   GDefaultRepositoryPermissionField,
   GDeleteBranchProtectionRuleInput,
@@ -604,6 +617,16 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GIssueCommentOrder,
   GIssueCommentOrderField,
   GIssueFilters,
+  GIssueListData,
+  GIssueListData_repository,
+  GIssueListData_repository_issues,
+  GIssueListData_repository_issues_nodes,
+  GIssueListData_repository_issues_nodes_comments,
+  GIssueListData_repository_issues_nodes_labels,
+  GIssueListData_repository_issues_nodes_labels_nodes,
+  GIssueListData_repository_issues_pageInfo,
+  GIssueListReq,
+  GIssueListVars,
   GIssueOrder,
   GIssueOrderField,
   GIssueState,

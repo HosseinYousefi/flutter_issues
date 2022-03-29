@@ -5,7 +5,7 @@ import 'issue_label.dart';
 
 part 'issue_list_item.freezed.dart';
 
-enum IssueStatus { open, closed }
+enum IssueState { open, closed }
 
 @freezed
 class IssueListItem with _$IssueListItem {
@@ -15,6 +15,6 @@ class IssueListItem with _$IssueListItem {
     required int commentCount,
     required DateTime createdAt,
     required IList<IssueLabel> labels,
-    required IssueStatus status,
+    required IssueState state,
   }) = _IssueListItem;
 }

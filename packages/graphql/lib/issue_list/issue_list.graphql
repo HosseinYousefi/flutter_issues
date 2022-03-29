@@ -1,0 +1,29 @@
+query IssueList($first: Int!, $after: String, $orderBy: IssueOrder = {field: CREATED_AT, direction: DESC}, $filterBy: IssueFilters) {
+  repository(name: "Flutter", owner: "Flutter") {
+    issues(orderBy: $orderBy, first: $first, after: $after, filterBy: $filterBy) {
+      nodes {
+        id
+        number
+        labels(first: 20) {
+          totalCount
+          nodes {
+            color
+            name
+          }
+        }
+        comments {
+          totalCount
+        }
+        title
+        state
+        createdAt
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
+    }
+  }
+}

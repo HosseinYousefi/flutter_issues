@@ -85,7 +85,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GCreateTeamDiscussionCommentInput.serializer)
       ..add(GCreateTeamDiscussionInput.serializer)
       ..add(GDate.serializer)
-      ..add(GDateTime.serializer)
       ..add(GDeclineTopicSuggestionInput.serializer)
       ..add(GDefaultRepositoryPermissionField.serializer)
       ..add(GDeleteBranchProtectionRuleInput.serializer)
@@ -173,6 +172,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GIssueCommentOrder.serializer)
       ..add(GIssueCommentOrderField.serializer)
       ..add(GIssueFilters.serializer)
+      ..add(GIssueListData.serializer)
+      ..add(GIssueListData_repository.serializer)
+      ..add(GIssueListData_repository_issues.serializer)
+      ..add(GIssueListData_repository_issues_nodes.serializer)
+      ..add(GIssueListData_repository_issues_nodes_comments.serializer)
+      ..add(GIssueListData_repository_issues_nodes_labels.serializer)
+      ..add(GIssueListData_repository_issues_nodes_labels_nodes.serializer)
+      ..add(GIssueListData_repository_issues_pageInfo.serializer)
+      ..add(GIssueListReq.serializer)
+      ..add(GIssueListVars.serializer)
       ..add(GIssueOrder.serializer)
       ..add(GIssueOrderField.serializer)
       ..add(GIssueState.serializer)
@@ -476,6 +485,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(GFileDeletion)]),
           () => new ListBuilder<GFileDeletion>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GIssueListData_repository_issues_nodes)]),
+          () => new ListBuilder<GIssueListData_repository_issues_nodes>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GIssueListData_repository_issues_nodes_labels_nodes)
+          ]),
+          () => new ListBuilder<
+              GIssueListData_repository_issues_nodes_labels_nodes>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(GProjectCardImport)]),
           () => new ListBuilder<GProjectCardImport>())
