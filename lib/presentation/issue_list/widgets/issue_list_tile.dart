@@ -8,9 +8,11 @@ import '../../common/issue_state_icon.dart';
 class IssueListTile extends StatelessWidget {
   final IssueListItem issue;
   final VoidCallback? onTap;
+  final bool isVisited;
 
   const IssueListTile({
     required this.issue,
+    required this.isVisited,
     this.onTap,
     Key? key,
   }) : super(key: key);
@@ -50,9 +52,19 @@ class IssueListTile extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 10),
+            if (!isVisited)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: CircleAvatar(
+                  backgroundColor: theme.colorScheme.primary,
+                  radius: 2,
+                ),
+              ),
             Text(
               timeago.format(issue.createdAt, locale: 'en_short'),
-              style: theme.textTheme.bodySmall,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: isVisited ? theme.hintColor : theme.colorScheme.primary,
+              ),
             ),
           ],
         ),

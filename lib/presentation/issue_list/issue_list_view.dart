@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../application/auth/auth_form/auth_form_notifier.dart';
 import '../../application/issue_list/issue_list_config.dart';
 import '../../application/issue_list/issue_list_notifier.dart';
+import '../../application/visited_issues/visited_issues_notifier.dart';
 import '../../domain/issue/issue_list/entities/issue_filter.dart';
 import '../../domain/issue/issue_list/entities/issue_order.dart';
 import '../common/common_app_bar.dart';
@@ -18,6 +19,7 @@ class IssueListView extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final visitedIssues = ref.watch(visitedIssuesStateProvider);
     final issueFilter = ref.watch(issueFilterStateProvider);
     final issueOrder = ref.watch(issueOrderStateProvider);
     final issueFilterNotifier = ref.watch(issueFilterStateProvider.notifier);
@@ -132,6 +134,7 @@ class IssueListView extends HookConsumerWidget {
                 },
                 key: ValueKey('Issue#${issue.number}'),
                 issue: issue,
+                isVisited: visitedIssues.contains(issue.number),
               );
             },
           );

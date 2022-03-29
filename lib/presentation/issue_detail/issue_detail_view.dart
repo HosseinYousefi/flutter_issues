@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import '../../application/issue_detail/issue_detail_notifier.dart';
+import '../../application/visited_issues/visited_issues_notifier.dart';
 import '../common/common_app_bar.dart';
 import '../common/issue_state_icon.dart';
 
@@ -17,6 +19,11 @@ class IssueDetailView extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final visitedIssuesNotifier = ref.watch(visitedIssuesNotifierProvider);
+    useEffect(() {
+      visitedIssuesNotifier.issueVisited(number);
+      return null;
+    }, []);
     final state = ref.watch(issueDetailStateProvider(number));
     final theme = Theme.of(context);
     return Scaffold(

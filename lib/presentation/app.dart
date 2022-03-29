@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../infrastructure/auth/auth_service.dart';
 import '../infrastructure/core/gql_client.dart';
 import '../infrastructure/settings/settings_service.dart';
+import '../infrastructure/visited_issues/visited_issues_service.dart';
 import 'loading_screen/loading_screen.dart';
 import 'router/app_route_information_parser.dart';
 import 'router/app_router_delegate.dart';
@@ -14,9 +15,11 @@ final _isLoading = Provider((ref) {
   final hiveStore = ref.watch(storeProvider);
   final token = ref.watch(tokenProvider);
   final settings = ref.watch(settingsProvider);
+  final visitedIssues = ref.watch(visitedIssuesProvider);
   return hiveStore is! AsyncData ||
       token is! AsyncData ||
-      settings is! AsyncData;
+      settings is! AsyncData ||
+      visitedIssues is! AsyncData;
 });
 
 class App extends HookConsumerWidget {
