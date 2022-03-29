@@ -7,14 +7,21 @@ import '../../domain/core/entities/page_status.dart';
 import '../../domain/core/entities/repo_failure.dart';
 import '../../domain/issue_list/entities/issue_list.dart';
 import '../../domain/issue_list/issue_list_interfaces.dart';
+import '../../infrastructure/issue_list/issue_list_repo.dart';
 import 'issue_list_state.dart';
 
-class IssueListController extends StateNotifier<IssueListState> {
+final issueListStateProvider =
+    StateNotifierProvider<IssueListNotifier, IssueListState>((ref) {
+  final issueListRepo = ref.watch(issueListRepoProvider);
+  return IssueListNotifier(issueListRepo);
+});
+
+class IssueListNotifier extends StateNotifier<IssueListState> {
   final IIssueListRepo _issueListRepo;
 
   StreamSubscription<Either<RepoFailure, IssueList>>? _subscription;
 
-  IssueListController(this._issueListRepo)
+  IssueListNotifier(this._issueListRepo)
       : super(const IssueListState.loading()) {
     _subscription = _issueListRepo.watch().listen((event) {
       event.fold(
@@ -40,22 +47,25 @@ class IssueListController extends StateNotifier<IssueListState> {
   }
 
   void loadMore() {
-    state.maybeWhen(
-      data: (issueList) {
-        // Setting the status of pagination to loading.
-        state = IssueListState.data(
-          issueList: issueList.copyWith(
-            pageInfo: issueList.pageInfo.copyWith(
-              status: const PageStatus.loading(),
+    scheduleMicrotask(() {
+      // Not changing the state during the build
+      state.maybeWhen(
+        data: (issueList) {
+          // Setting the status of pagination to loading.
+          state = IssueListState.data(
+            issueList: issueList.copyWith(
+              pageInfo: issueList.pageInfo.copyWith(
+                status: const PageStatus.loading(),
+              ),
             ),
-          ),
-        );
-        _issueListRepo.loadMore();
-      },
-      orElse: () {
-        // Do nothing if there is no data available.
-      },
-    );
+          );
+          _issueListRepo.loadMore();
+        },
+        orElse: () {
+          // Do nothing if there is no data available.
+        },
+      );
+    });
   }
 
   @override

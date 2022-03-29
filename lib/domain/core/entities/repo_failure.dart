@@ -4,5 +4,10 @@ part 'repo_failure.freezed.dart';
 
 @freezed
 class RepoFailure with _$RepoFailure {
-  const factory RepoFailure.general() = _General;
+  const factory RepoFailure.serverException({
+    required String message,
+  }) = _ServerException;
+  const factory RepoFailure.general({
+    @Default('General Error') String message,
+  }) = _General;
 }

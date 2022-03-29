@@ -9,7 +9,7 @@ part 'issue_list.freezed.dart';
 @freezed
 class IssueList with _$IssueList {
   const factory IssueList({
-    required IList<IssueListItem> issues,
+    required List<IssueListItem> issues,
     required PageInfo pageInfo,
   }) = _IssueList;
 }

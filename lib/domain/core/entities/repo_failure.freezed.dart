@@ -18,8 +18,16 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$RepoFailureTearOff {
   const _$RepoFailureTearOff();
 
-  _General general() {
-    return const _General();
+  _ServerException serverException({required String message}) {
+    return _ServerException(
+      message: message,
+    );
+  }
+
+  _General general({String message = 'General Error'}) {
+    return _General(
+      message: message,
+    );
   }
 }
 
@@ -28,37 +36,49 @@ const $RepoFailure = _$RepoFailureTearOff();
 
 /// @nodoc
 mixin _$RepoFailure {
+  String get message => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() general,
+    required TResult Function(String message) serverException,
+    required TResult Function(String message) general,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? general,
+    TResult Function(String message)? serverException,
+    TResult Function(String message)? general,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? general,
+    TResult Function(String message)? serverException,
+    TResult Function(String message)? general,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_ServerException value) serverException,
     required TResult Function(_General value) general,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ServerException value)? serverException,
     TResult Function(_General value)? general,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerException value)? serverException,
     TResult Function(_General value)? general,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $RepoFailureCopyWith<RepoFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -67,6 +87,7 @@ abstract class $RepoFailureCopyWith<$Res> {
   factory $RepoFailureCopyWith(
           RepoFailure value, $Res Function(RepoFailure) then) =
       _$RepoFailureCopyWithImpl<$Res>;
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -76,12 +97,165 @@ class _$RepoFailureCopyWithImpl<$Res> implements $RepoFailureCopyWith<$Res> {
   final RepoFailure _value;
   // ignore: unused_field
   final $Res Function(RepoFailure) _then;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_value.copyWith(
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$GeneralCopyWith<$Res> {
+abstract class _$ServerExceptionCopyWith<$Res>
+    implements $RepoFailureCopyWith<$Res> {
+  factory _$ServerExceptionCopyWith(
+          _ServerException value, $Res Function(_ServerException) then) =
+      __$ServerExceptionCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$ServerExceptionCopyWithImpl<$Res>
+    extends _$RepoFailureCopyWithImpl<$Res>
+    implements _$ServerExceptionCopyWith<$Res> {
+  __$ServerExceptionCopyWithImpl(
+      _ServerException _value, $Res Function(_ServerException) _then)
+      : super(_value, (v) => _then(v as _ServerException));
+
+  @override
+  _ServerException get _value => super._value as _ServerException;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_ServerException(
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ServerException implements _ServerException {
+  const _$_ServerException({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'RepoFailure.serverException(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ServerException &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$ServerExceptionCopyWith<_ServerException> get copyWith =>
+      __$ServerExceptionCopyWithImpl<_ServerException>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) serverException,
+    required TResult Function(String message) general,
+  }) {
+    return serverException(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String message)? serverException,
+    TResult Function(String message)? general,
+  }) {
+    return serverException?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? serverException,
+    TResult Function(String message)? general,
+    required TResult orElse(),
+  }) {
+    if (serverException != null) {
+      return serverException(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ServerException value) serverException,
+    required TResult Function(_General value) general,
+  }) {
+    return serverException(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ServerException value)? serverException,
+    TResult Function(_General value)? general,
+  }) {
+    return serverException?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerException value)? serverException,
+    TResult Function(_General value)? general,
+    required TResult orElse(),
+  }) {
+    if (serverException != null) {
+      return serverException(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ServerException implements RepoFailure {
+  const factory _ServerException({required String message}) =
+      _$_ServerException;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$ServerExceptionCopyWith<_ServerException> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$GeneralCopyWith<$Res> implements $RepoFailureCopyWith<$Res> {
   factory _$GeneralCopyWith(_General value, $Res Function(_General) then) =
       __$GeneralCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -92,51 +266,78 @@ class __$GeneralCopyWithImpl<$Res> extends _$RepoFailureCopyWithImpl<$Res>
 
   @override
   _General get _value => super._value as _General;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_General(
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_General implements _General {
-  const _$_General();
+  const _$_General({this.message = 'General Error'});
+
+  @JsonKey()
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'RepoFailure.general()';
+    return 'RepoFailure.general(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _General);
+        (other.runtimeType == runtimeType &&
+            other is _General &&
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$GeneralCopyWith<_General> get copyWith =>
+      __$GeneralCopyWithImpl<_General>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() general,
+    required TResult Function(String message) serverException,
+    required TResult Function(String message) general,
   }) {
-    return general();
+    return general(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? general,
+    TResult Function(String message)? serverException,
+    TResult Function(String message)? general,
   }) {
-    return general?.call();
+    return general?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? general,
+    TResult Function(String message)? serverException,
+    TResult Function(String message)? general,
     required TResult orElse(),
   }) {
     if (general != null) {
-      return general();
+      return general(message);
     }
     return orElse();
   }
@@ -144,6 +345,7 @@ class _$_General implements _General {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_ServerException value) serverException,
     required TResult Function(_General value) general,
   }) {
     return general(this);
@@ -152,6 +354,7 @@ class _$_General implements _General {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ServerException value)? serverException,
     TResult Function(_General value)? general,
   }) {
     return general?.call(this);
@@ -160,6 +363,7 @@ class _$_General implements _General {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerException value)? serverException,
     TResult Function(_General value)? general,
     required TResult orElse(),
   }) {
@@ -171,5 +375,12 @@ class _$_General implements _General {
 }
 
 abstract class _General implements RepoFailure {
-  const factory _General() = _$_General;
+  const factory _General({String message}) = _$_General;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$GeneralCopyWith<_General> get copyWith =>
+      throw _privateConstructorUsedError;
 }

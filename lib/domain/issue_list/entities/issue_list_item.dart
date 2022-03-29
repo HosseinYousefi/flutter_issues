@@ -14,7 +14,7 @@ class IssueListItem with _$IssueListItem {
     required String title,
     required int commentCount,
     required DateTime createdAt,
-    required IList<IssueLabel> labels,
+    required List<IssueLabel> labels,
     required IssueState state,
   }) = _IssueListItem;
 }

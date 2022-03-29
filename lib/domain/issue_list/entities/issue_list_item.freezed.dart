@@ -23,7 +23,7 @@ class _$IssueListItemTearOff {
       required String title,
       required int commentCount,
       required DateTime createdAt,
-      required IList<IssueLabel> labels,
+      required List<IssueLabel> labels,
       required IssueState state}) {
     return _IssueListItem(
       number: number,
@@ -45,7 +45,7 @@ mixin _$IssueListItem {
   String get title => throw _privateConstructorUsedError;
   int get commentCount => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
-  IList<IssueLabel> get labels => throw _privateConstructorUsedError;
+  List<IssueLabel> get labels => throw _privateConstructorUsedError;
   IssueState get state => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -63,7 +63,7 @@ abstract class $IssueListItemCopyWith<$Res> {
       String title,
       int commentCount,
       DateTime createdAt,
-      IList<IssueLabel> labels,
+      List<IssueLabel> labels,
       IssueState state});
 }
 
@@ -105,7 +105,7 @@ class _$IssueListItemCopyWithImpl<$Res>
       labels: labels == freezed
           ? _value.labels
           : labels // ignore: cast_nullable_to_non_nullable
-              as IList<IssueLabel>,
+              as List<IssueLabel>,
       state: state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
@@ -126,7 +126,7 @@ abstract class _$IssueListItemCopyWith<$Res>
       String title,
       int commentCount,
       DateTime createdAt,
-      IList<IssueLabel> labels,
+      List<IssueLabel> labels,
       IssueState state});
 }
 
@@ -170,7 +170,7 @@ class __$IssueListItemCopyWithImpl<$Res>
       labels: labels == freezed
           ? _value.labels
           : labels // ignore: cast_nullable_to_non_nullable
-              as IList<IssueLabel>,
+              as List<IssueLabel>,
       state: state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
@@ -199,7 +199,7 @@ class _$_IssueListItem implements _IssueListItem {
   @override
   final DateTime createdAt;
   @override
-  final IList<IssueLabel> labels;
+  final List<IssueLabel> labels;
   @override
   final IssueState state;
 
@@ -244,7 +244,7 @@ abstract class _IssueListItem implements IssueListItem {
       required String title,
       required int commentCount,
       required DateTime createdAt,
-      required IList<IssueLabel> labels,
+      required List<IssueLabel> labels,
       required IssueState state}) = _$_IssueListItem;
 
   @override
@@ -256,7 +256,7 @@ abstract class _IssueListItem implements IssueListItem {
   @override
   DateTime get createdAt;
   @override
-  IList<IssueLabel> get labels;
+  List<IssueLabel> get labels;
   @override
   IssueState get state;
   @override

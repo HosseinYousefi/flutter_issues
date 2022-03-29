@@ -19,7 +19,7 @@ class _$IssueListTearOff {
   const _$IssueListTearOff();
 
   _IssueList call(
-      {required IList<IssueListItem> issues, required PageInfo pageInfo}) {
+      {required List<IssueListItem> issues, required PageInfo pageInfo}) {
     return _IssueList(
       issues: issues,
       pageInfo: pageInfo,
@@ -32,7 +32,7 @@ const $IssueList = _$IssueListTearOff();
 
 /// @nodoc
 mixin _$IssueList {
-  IList<IssueListItem> get issues => throw _privateConstructorUsedError;
+  List<IssueListItem> get issues => throw _privateConstructorUsedError;
   PageInfo get pageInfo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -44,7 +44,7 @@ mixin _$IssueList {
 abstract class $IssueListCopyWith<$Res> {
   factory $IssueListCopyWith(IssueList value, $Res Function(IssueList) then) =
       _$IssueListCopyWithImpl<$Res>;
-  $Res call({IList<IssueListItem> issues, PageInfo pageInfo});
+  $Res call({List<IssueListItem> issues, PageInfo pageInfo});
 
   $PageInfoCopyWith<$Res> get pageInfo;
 }
@@ -66,7 +66,7 @@ class _$IssueListCopyWithImpl<$Res> implements $IssueListCopyWith<$Res> {
       issues: issues == freezed
           ? _value.issues
           : issues // ignore: cast_nullable_to_non_nullable
-              as IList<IssueListItem>,
+              as List<IssueListItem>,
       pageInfo: pageInfo == freezed
           ? _value.pageInfo
           : pageInfo // ignore: cast_nullable_to_non_nullable
@@ -88,7 +88,7 @@ abstract class _$IssueListCopyWith<$Res> implements $IssueListCopyWith<$Res> {
           _IssueList value, $Res Function(_IssueList) then) =
       __$IssueListCopyWithImpl<$Res>;
   @override
-  $Res call({IList<IssueListItem> issues, PageInfo pageInfo});
+  $Res call({List<IssueListItem> issues, PageInfo pageInfo});
 
   @override
   $PageInfoCopyWith<$Res> get pageInfo;
@@ -112,7 +112,7 @@ class __$IssueListCopyWithImpl<$Res> extends _$IssueListCopyWithImpl<$Res>
       issues: issues == freezed
           ? _value.issues
           : issues // ignore: cast_nullable_to_non_nullable
-              as IList<IssueListItem>,
+              as List<IssueListItem>,
       pageInfo: pageInfo == freezed
           ? _value.pageInfo
           : pageInfo // ignore: cast_nullable_to_non_nullable
@@ -127,7 +127,7 @@ class _$_IssueList implements _IssueList {
   const _$_IssueList({required this.issues, required this.pageInfo});
 
   @override
-  final IList<IssueListItem> issues;
+  final List<IssueListItem> issues;
   @override
   final PageInfo pageInfo;
 
@@ -159,11 +159,11 @@ class _$_IssueList implements _IssueList {
 
 abstract class _IssueList implements IssueList {
   const factory _IssueList(
-      {required IList<IssueListItem> issues,
+      {required List<IssueListItem> issues,
       required PageInfo pageInfo}) = _$_IssueList;
 
   @override
-  IList<IssueListItem> get issues;
+  List<IssueListItem> get issues;
   @override
   PageInfo get pageInfo;
   @override

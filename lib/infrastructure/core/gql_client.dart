@@ -5,6 +5,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 
+import '../../domain/core/entities/repo_failure.dart';
+
 final gitHubGqlEndpointProvider =
     Provider((_) => 'https://api.github.com/graphql');
 
@@ -37,7 +39,7 @@ final authHttpClientProvider = Provider((_) => AuthHttpClient());
 /// * storeProvider
 /// * gitHubGqlLinkProvider
 /// * authHttpClientProvider
-final gqlClient = Provider((ref) {
+final gqlClientProvider = Provider<TypedLink>((ref) {
   final store = ref.watch(storeProvider).asData!.value;
   final endpoint = ref.watch(gitHubGqlEndpointProvider);
   final httpClient = ref.watch(authHttpClientProvider);
@@ -48,3 +50,14 @@ final gqlClient = Provider((ref) {
     cache: cache,
   );
 });
+
+extension LinkExceptionX on LinkException {
+  RepoFailure toDomain() {
+    if (this is ServerException) {
+      final message =
+          (this as ServerException).parsedResponse?.response['message'];
+      return RepoFailure.serverException(message: message ?? 'Server Error');
+    }
+    return const RepoFailure.general();
+  }
+}
