@@ -1,5 +1,6 @@
 import 'package:ferry/ferry.dart';
 import 'package:ferry_hive_store/ferry_hive_store.dart';
+import 'package:flutterissues/infrastructure/auth/auth_service.dart';
 import 'package:gql_http_link/gql_http_link.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -23,15 +24,21 @@ final storeProvider = FutureProvider((_) async {
 /// An HTTP client that adds an Authorization header to the request.
 class AuthHttpClient extends http.BaseClient {
   final http.Client _client = http.Client();
+  final Reader reader;
+
+  AuthHttpClient(this.reader);
 
   @override
   Future<http.StreamedResponse> send(http.BaseRequest request) async {
-    // TODO: add auth token to request
+    final token = reader(tokenProvider).asData?.value;
+    if (token != null) {
+      request.headers['Authorization'] = 'bearer $token';
+    }
     return _client.send(request);
   }
 }
 
-final authHttpClientProvider = Provider((_) => AuthHttpClient());
+final authHttpClientProvider = Provider((ref) => AuthHttpClient(ref.read));
 
 /// Provider for [TypedLink]. Used for GraphQL requests.
 ///

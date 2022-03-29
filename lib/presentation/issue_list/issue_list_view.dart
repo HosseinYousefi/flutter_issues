@@ -49,6 +49,7 @@ class IssueListView extends HookConsumerWidget {
                           // Otherwise don't do anything
                         },
                       );
+                      return null;
                     }, []);
                     return issueList.pageInfo.status.maybeWhen(
                       loading: () =>
