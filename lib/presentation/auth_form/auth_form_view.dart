@@ -16,23 +16,28 @@ class AuthFormView extends HookConsumerWidget {
       appBar: CommonAppBar(
         title: const Text('Paste Your GitHub Token'),
       ),
-      body: Column(
-        children: [
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'GitHub Token',
-              errorText:
-                  state.hasError ? 'Incorrect format for GitHub Token' : null,
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'GitHub Token',
+                errorText:
+                    state.hasError ? 'Incorrect format for GitHub Token' : null,
+              ),
+              enableSuggestions: false,
+              autocorrect: false,
+              onChanged: notifier.tokenChanged,
             ),
-            enableSuggestions: false,
-            autocorrect: false,
-            onChanged: notifier.tokenChanged,
-          ),
-          ElevatedButton(
-            onPressed: notifier.authenticated,
-            child: const Text('Submit'),
-          ),
-        ],
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: notifier.authenticated,
+              child: const Text('Submit'),
+            ),
+          ],
+        ),
       ),
     );
   }
