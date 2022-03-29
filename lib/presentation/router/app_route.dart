@@ -48,9 +48,6 @@ class AppRoute with _$AppRoute {
           ],
         ];
       },
-      loading: () {
-        return const [MaterialPage(child: LoadingScreen())];
-      },
       unauthenticated: () {
         return const [MaterialPage(child: AuthFormView())];
       },

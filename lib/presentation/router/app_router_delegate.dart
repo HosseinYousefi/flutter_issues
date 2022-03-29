@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterissues/application/settings/settings_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../application/auth/auth_notifier.dart';
@@ -20,27 +21,37 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
   late AppRoute currentConfiguration;
 
   AppRouterDelegate(this.ref) {
+    // Listening to changes in settings (for theme changes)
+    // and in the state of authentication and rebuilding.
     ref.listen(authStateProvider, (_, __) {
+      notifyListeners();
+    });
+    ref.listen(settingsStateProvider, (_, __) {
       notifyListeners();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Navigator(
-      key: navigatorKey,
-      pages: currentConfiguration.pageStackFor(
-        authState: ref.read(authStateProvider),
+    return Theme(
+      data: ref.read(settingsStateProvider).brightness == Brightness.dark
+          ? ThemeData.dark()
+          : ThemeData.light(),
+      child: Navigator(
+        key: navigatorKey,
+        pages: currentConfiguration.pageStackFor(
+          authState: ref.read(authStateProvider),
+        ),
+        onPopPage: (route, result) {
+          if (!route.didPop(result)) {
+            return false;
+          }
+          if (currentConfiguration is IssueDetailRoute) {
+            setNewRoutePath(const HomeRoute());
+          }
+          return true;
+        },
       ),
-      onPopPage: (route, result) {
-        if (!route.didPop(result)) {
-          return false;
-        }
-        if (currentConfiguration is IssueDetailRoute) {
-          setNewRoutePath(const HomeRoute());
-        }
-        return true;
-      },
     );
   }
 

@@ -12,14 +12,10 @@ class AppRouteInformationParser extends RouteInformationParser<AppRoute> {
 
   @override
   Future<AppRoute> parseRouteInformation(RouteInformation routeInformation) {
-    print(routeInformation.location);
     final authState = ref.read(authStateProvider);
     final uri = Uri.parse(routeInformation.location ?? '/');
     try {
       return SynchronousFuture(authState.when(
-        loading: () {
-          return const AppRoute.home();
-        },
         authenticated: (_) {
           if (uri.pathSegments.isEmpty) {
             return const AppRoute.home();

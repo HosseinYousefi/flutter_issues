@@ -3,8 +3,6 @@
 /// For now it requires the user to create the token, however this can also
 /// be done using "Login with GitHub" feature later on.
 abstract class IAuthService {
-  const IAuthService();
-
   /// Stores the GitHub token.
   void storeToken(String token);
 
@@ -15,5 +13,5 @@ abstract class IAuthService {
   String? get token;
 
   /// The changes in token.
-  Stream<String?> get onTokenChange;
+  Stream<String?> get onTokenChanged;
 }

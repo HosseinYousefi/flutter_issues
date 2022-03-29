@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutterissues/application/auth/auth_form/auth_form_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../application/issue_list/issue_list_notifier.dart';
+import '../common/common_app_bar.dart';
 
 class IssueListView extends HookConsumerWidget {
   const IssueListView({Key? key}) : super(key: key);
@@ -12,14 +12,9 @@ class IssueListView extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(issueListStateProvider);
     final notifier = ref.watch(issueListStateProvider.notifier);
-    final authFormNotifier = ref.watch(authFormStateProvider.notifier);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Issues'),
-        leading: IconButton(
-          onPressed: authFormNotifier.loggedOut,
-          icon: const Icon(Icons.logout),
-        ),
+      appBar: const CommonAppBar(
+        title: Text('Flutter Issues'),
       ),
       body: state.when(
         loading: () {

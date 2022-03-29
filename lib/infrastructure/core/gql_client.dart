@@ -11,11 +11,11 @@ import '../../domain/core/entities/repo_failure.dart';
 final gitHubGqlEndpointProvider =
     Provider((_) => 'https://api.github.com/graphql');
 
-/// Provider for the [HiveStore].
+/// Provider for the [Store].
 ///
 /// We are using this provider when launching the app (Loading Screen)
 /// so we no longer need to await to get its value.
-final storeProvider = FutureProvider((_) async {
+final storeProvider = FutureProvider<Store>((_) async {
   await Hive.initFlutter();
   final box = await Hive.openBox('cache');
   return HiveStore(box);

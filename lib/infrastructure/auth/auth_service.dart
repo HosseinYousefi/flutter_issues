@@ -11,11 +11,11 @@ final authServiceProvider = Provider<IAuthService>((ref) {
 
 final tokenProvider = StreamProvider((ref) {
   final authService = ref.watch(authServiceProvider);
-  return authService.onTokenChange;
+  return authService.onTokenChanged;
 });
 
 class AuthService implements IAuthService {
-  final HiveStore _store;
+  final Store _store;
 
   const AuthService(this._store);
 
@@ -33,6 +33,6 @@ class AuthService implements IAuthService {
   String? get token => _store.get('token')?['token'];
 
   @override
-  Stream<String?> get onTokenChange =>
+  Stream<String?> get onTokenChanged =>
       _store.watch('token').map((m) => m?['token'] as String?);
 }

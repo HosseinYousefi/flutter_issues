@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../application/auth/auth_form/auth_form_notifier.dart';
+import '../common/common_app_bar.dart';
 
 class AuthFormView extends HookConsumerWidget {
   const AuthFormView({Key? key}) : super(key: key);
@@ -12,8 +13,8 @@ class AuthFormView extends HookConsumerWidget {
     final notifier = ref.watch(authFormStateProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Paste Your GitHub Token'),
+      appBar: const CommonAppBar(
+        title: Text('Paste Your GitHub Token'),
       ),
       body: Column(
         children: [
