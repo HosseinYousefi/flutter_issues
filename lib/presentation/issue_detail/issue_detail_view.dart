@@ -65,7 +65,9 @@ class IssueDetailView extends HookConsumerWidget {
                 children: [
                   CircleAvatar(
                     radius: 18,
-                    backgroundImage: NetworkImage(issue.authorPhoto),
+                    backgroundImage: Uri.parse(issue.authorPhoto).isAbsolute
+                        ? NetworkImage(issue.authorPhoto)
+                        : null,
                   ),
                   const SizedBox(width: 10),
                   Column(
