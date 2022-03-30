@@ -23,9 +23,9 @@ jobs:
       uses: subosito/flutter-action@v1
     
     - name: Flutter and Dart versions
-        run: |
-          dart --version
-          flutter --version
+      run: |
+        dart --version
+        flutter --version
 
     - name: Getting the Flutter dependencies
       run: flutter pub get
