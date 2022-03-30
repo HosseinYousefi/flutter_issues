@@ -38,7 +38,12 @@ class AuthHttpClient extends http.BaseClient {
   }
 }
 
-final authHttpClientProvider = Provider((ref) => AuthHttpClient(ref.read));
+final gqlLinkProvider = Provider<Link>(
+  (ref) {
+    final endpoint = ref.watch(gitHubGqlEndpointProvider);
+    return HttpLink(endpoint, httpClient: AuthHttpClient(ref.read));
+  },
+);
 
 /// Provider for [Client]. Used for GraphQL requests.
 ///
@@ -48,9 +53,7 @@ final authHttpClientProvider = Provider((ref) => AuthHttpClient(ref.read));
 /// * authHttpClientProvider
 final gqlClientProvider = Provider<Client>((ref) {
   final store = ref.watch(storeProvider).asData!.value;
-  final endpoint = ref.watch(gitHubGqlEndpointProvider);
-  final httpClient = ref.watch(authHttpClientProvider);
-  final link = HttpLink(endpoint, httpClient: httpClient);
+  final link = ref.watch(gqlLinkProvider);
   final cache = Cache(store: store);
   return Client(
     link: link,
@@ -72,6 +75,10 @@ extension LinkExceptionX on LinkException {
 extension OperationResponseX<S, T> on OperationResponse<S, T> {
   /// Converts the linkException/graphQL errors into domain failures.
   /// if there is no failure, returns null.
+  ///
+  /// We can improve this section by finely converting both linkExceptions
+  /// and graphQLErrors to multiple RepoFailures instead of putting most
+  /// of them into the "General" failure category.
   RepoFailure? getDomainFailure() {
     if (hasErrors || data == null) {
       if (linkException != null) {
