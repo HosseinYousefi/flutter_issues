@@ -30,8 +30,9 @@ jobs:
     - name: Getting the Flutter dependencies
       run: flutter pub get
 
+    # Excluding the generated files
     - name: Checking for any formatting issues
-      run: flutter format --set-exit-if-changed .
+      run: find lib/ packages/ -name "*.dart" ! -name "*.g.dart" ! -name "*.gql.dart" ! -name "*.freezed.dart" | tr '\n' ' ' | xargs flutter format --set-exit-if-changed
 
     - name: Analyzing the code
       run: flutter analyze .
