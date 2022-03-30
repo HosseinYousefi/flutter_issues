@@ -1,16 +1,13 @@
 # flutterissues
 
-A new Flutter project.
+A simple app which shows a list of the flutter issues on GitHub using GitHub GraphQL API.
 
-## Getting Started
+## Installation
 
-This project is a starting point for a Flutter application.
+You can clone this repository and run the `lib/main.dart`.
 
-A few resources to get you started if this is your first Flutter project:
+Alternatively [here's an invite link](https://appdistribution.firebase.dev/i/4051ed429de9e3c9) to Firebase App Distribution where you can download the Android version.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Usage
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+To use the app you need to have a personal token from GitHub. [Follow the steps here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) and paste your token in the app. You only need to check `public_repo` access.
